@@ -1,8 +1,8 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { getOrCreateDeviceId, urlBase64ToUint8Array,  } from '#@/lib/pushUtils';
 import { subscribeUser, unSubscribeUser } from '#@/app/actions/notifications';
+import { getOrCreateDeviceId, urlBase64ToUint8Array } from '#@/lib/utils/pushUtils';
 
 interface PushContextType {
   isSupported        : boolean;
