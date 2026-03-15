@@ -2,7 +2,14 @@
 import { Typography, Grid, Card, CardContent, Chip, Box } from '@mui/material';
 
 export default function Curriculum() {
-  const skills = ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Node.js', 'Material UI'];
+  const skills = [
+    'JavaScript',
+    'TypeScript',
+    'React',
+    'Next.js',
+    'Node.js',
+    'Material UI'
+  ];
 
   return (
     <Box>
@@ -13,28 +20,43 @@ export default function Curriculum() {
         Full Stack Web Developer
       </Typography>
 
-      <Typography variant="h5" gutterBottom sx={{ mt: 4 }}>
+      <Typography variant="h5" gutterBottom sx={{
+        mt: 4 
+      }}
+      >
         Core Skills
       </Typography>
       <Grid container spacing={2}>
-        {skills.map((skill) => (
+        {skills.map( ( skill ) => {
+          return (
           /* REMOVED: The 'item' prop is no longer needed here */
-          <Grid key={skill}>
-            <Chip label={skill} color="primary" variant="outlined" />
-          </Grid>
-        ))}
+            <Grid key={skill}>
+              <Chip label={skill} color="primary" variant="outlined" />
+            </Grid>
+          );
+        } )}
       </Grid>
 
-      <Typography variant="h5" gutterBottom sx={{ mt: 4 }}>
+      <Typography variant="h5" gutterBottom sx={{
+        mt: 4 
+      }}
+      >
         Recent Projects
       </Typography>
       <Grid container spacing={3}>
         {/* UPDATED: Replaced 'item xs={12} md={6}' with 'size={{ xs: 12, md: 6 }}' */}
-        <Grid size={{ xs: 12, md: 6 }}>
+        <Grid size={{
+          xs: 12,
+          md: 6 
+        }}
+        >
           <Card variant="outlined">
             <CardContent>
               <Typography variant="h6">Legal Advisory Platform</Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+              <Typography variant="body2" color="text.secondary" sx={{
+                mt: 1 
+              }}
+              >
                 A comprehensive web application managing client cases and documentation. Built with React and Node.js.
               </Typography>
             </CardContent>
