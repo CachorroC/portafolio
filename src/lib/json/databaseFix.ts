@@ -4,35 +4,37 @@ import * as fs from 'fs';
 import { PlantData } from '../types/plantBase';
 const plantData: PlantData[] = [
   {
-    'conservationStatus': 'Vulnerable (VU)',
-    'ecosystems'        : [
+    conservationStatus: 'Vulnerable (VU)',
+    ecosystems        : [
       'Bosque andino'
     ],
-    'url'     : 'https://www.google.com/search?q=Quercus+humboldtii&tbm=isch',
-    'imageUrl': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjJt8_Rt78kA-vjyLNoxTcb9CyqzhTM4w0KQ&s',
-    'regions' : [
+    url: 'https://www.google.com/search?q=Quercus+humboldtii&tbm=isch',
+    imageUrl:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjJt8_Rt78kA-vjyLNoxTcb9CyqzhTM4w0KQ&s',
+    regions: [
       'Boyacá',
       'Santander'
     ],
-    'scientificName': 'Quercus humboldtii',
-    'taxon'         : {
-      'family' : 'Fagaceae',
-      'genus'  : 'Quercus',
-      'species': 'humboldtii'
+    scientificName: 'Quercus humboldtii',
+    taxon         : {
+      family : 'Fagaceae',
+      genus  : 'Quercus',
+      species: 'humboldtii',
     },
-    'commonNames': [
+    commonNames: [
       'Roble colombiano',
       'Roble Andino'
-    ]
+    ],
   },
   {
-    'conservationStatus': 'Near Threatened (NT)',
-    'ecosystems'        : [
+    conservationStatus: 'Near Threatened (NT)',
+    ecosystems        : [
       'Bosque andino'
     ],
-    'url'     : 'https://www.google.com/search?q=Cedrela+montana&tbm=isch',
-    'imageUrl': 'https://catalogofloravalleaburra.eia.edu.co/storage/images/5937e15ea21a329476b6ff6a39cbb81df1520f16.jpg',
-    'regions' : [
+    url: 'https://www.google.com/search?q=Cedrela+montana&tbm=isch',
+    imageUrl:
+      'https://catalogofloravalleaburra.eia.edu.co/storage/images/5937e15ea21a329476b6ff6a39cbb81df1520f16.jpg',
+    regions: [
       'Antioquia',
       'Boyacá',
       'Caldas',
@@ -44,1554 +46,1560 @@ const plantData: PlantData[] = [
       'Quindío',
       'Risaralda',
       'Santander',
-      'Valle del Cauca'
+      'Valle del Cauca',
     ],
-    'scientificName': 'Cedrela montana',
-    'taxon'         : {
-      'family' : 'Meliaceae',
-      'genus'  : 'Cedrela',
-      'species': 'montana'
+    scientificName: 'Cedrela montana',
+    taxon         : {
+      family : 'Meliaceae',
+      genus  : 'Cedrela',
+      species: 'montana',
     },
-    'commonNames': [
+    commonNames: [
       'Cedro de altura',
       'Cedro rosado'
-    ]
+    ],
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Bosque andino',
       'Subpáramo'
     ],
-    'url'           : 'https://www.google.com/search?q=Weinmannia+tomentosa&tbm=isch',
-    'imageUrl'      : 'https://inaturalist-open-data.s3.amazonaws.com/photos/54317988/large.jpeg',
-    'regions'       : null,
-    'scientificName': 'Weinmannia tomentosa',
-    'taxon'         : {
-      'family' : 'Cunoniaceae',
-      'genus'  : 'Weinmannia',
-      'species': 'tomentosa'
+    url: 'https://www.google.com/search?q=Weinmannia+tomentosa&tbm=isch',
+    imageUrl:
+      'https://inaturalist-open-data.s3.amazonaws.com/photos/54317988/large.jpeg',
+    regions       : null,
+    scientificName: 'Weinmannia tomentosa',
+    taxon         : {
+      family : 'Cunoniaceae',
+      genus  : 'Weinmannia',
+      species: 'tomentosa',
     },
-    'commonNames': [
+    commonNames: [
       'Encenillo'
-    ]
+    ],
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Bosque andino'
     ],
-    'url'           : 'https://www.google.com/search?q=Clusia+multiflora&tbm=isch',
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Clusia multiflora',
-    'taxon'         : {
-      'family' : 'Clusiaceae',
-      'genus'  : 'Clusia',
-      'species': 'multiflora'
+    url           : 'https://www.google.com/search?q=Clusia+multiflora&tbm=isch',
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Clusia multiflora',
+    taxon         : {
+      family : 'Clusiaceae',
+      genus  : 'Clusia',
+      species: 'multiflora',
     },
-    'commonNames': [
+    commonNames: [
       'Gaque',
       'Chagualo'
-    ]
+    ],
   },
   {
-    'conservationStatus': 'Not Evaluated (NE)',
-    'ecosystems'        : [
+    conservationStatus: 'Not Evaluated (NE)',
+    ecosystems        : [
       'Bosque andino',
       'Subpáramo'
     ],
-    'url'           : 'https://www.google.com/search?q=Vallea+stipularis&tbm=isch',
-    'imageUrl'      : 'https://www.google.com/search?q=Vallea+stipularis&tbm=isch',
-    'regions'       : null,
-    'scientificName': 'Vallea stipularis',
-    'taxon'         : {
-      'family' : 'Elaeocarpaceae',
-      'genus'  : 'Vallea',
-      'species': 'stipularis'
+    url           : 'https://www.google.com/search?q=Vallea+stipularis&tbm=isch',
+    imageUrl      : 'https://www.google.com/search?q=Vallea+stipularis&tbm=isch',
+    regions       : null,
+    scientificName: 'Vallea stipularis',
+    taxon         : {
+      family : 'Elaeocarpaceae',
+      genus  : 'Vallea',
+      species: 'stipularis',
     },
-    'commonNames': [
+    commonNames: [
       'Raque'
-    ]
+    ],
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Bosque andino'
     ],
-    'imageUrl': null,
-    'regions' : [
+    imageUrl: null,
+    regions : [
       'Cundinamarca',
       'Boyacá',
       'Santander'
     ],
-    'scientificName': 'Alnus acuminata',
-    'taxon'         : {
-      'family' : 'Betulaceae',
-      'genus'  : 'Alnus',
-      'species': 'acuminata'
+    scientificName: 'Alnus acuminata',
+    taxon         : {
+      family : 'Betulaceae',
+      genus  : 'Alnus',
+      species: 'acuminata',
     },
-    'commonNames': [
+    commonNames: [
       'Aliso'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Bosque andino'
     ],
-    'imageUrl'      : 'https://www.google.com/search?q=Drimys+granadensis&tbm=isch',
-    'regions'       : null,
-    'scientificName': 'Drimys granadensis',
-    'taxon'         : {
-      'family' : 'Winteraceae',
-      'genus'  : 'Drimys',
-      'species': 'granadensis'
+    imageUrl      : 'https://www.google.com/search?q=Drimys+granadensis&tbm=isch',
+    regions       : null,
+    scientificName: 'Drimys granadensis',
+    taxon         : {
+      family : 'Winteraceae',
+      genus  : 'Drimys',
+      species: 'granadensis',
     },
-    'commonNames': [
+    commonNames: [
       'Ají de páramo',
       'Canelo de Páramo'
     ],
-    url: 'https://www.google.com/search?q=Drimys+granadensis&tbm=isch'
+    url: 'https://www.google.com/search?q=Drimys+granadensis&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Bosque andino'
     ],
-    'imageUrl'      : 'https://www.google.com/search?q=Myrcianthes+leucoxyla&tbm=isch',
-    'regions'       : null,
-    'scientificName': 'Myrcianthes leucoxyla',
-    'taxon'         : {
-      'family' : 'Myrtaceae',
-      'genus'  : 'Myrcianthes',
-      'species': 'leucoxyla'
+    imageUrl      : 'https://www.google.com/search?q=Myrcianthes+leucoxyla&tbm=isch',
+    regions       : null,
+    scientificName: 'Myrcianthes leucoxyla',
+    taxon         : {
+      family : 'Myrtaceae',
+      genus  : 'Myrcianthes',
+      species: 'leucoxyla',
     },
-    'commonNames': [
+    commonNames: [
       'Arrayán blanco',
       'Arrayán'
     ],
-    url: 'https://www.google.com/search?q=Myrcianthes+leucoxyla&tbm=isch'
+    url: 'https://www.google.com/search?q=Myrcianthes+leucoxyla&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Bosque andino',
       'Subpáramo'
     ],
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Oreopanax bogotensis',
-    'taxon'         : {
-      'family' : 'Araliaceae',
-      'genus'  : 'Oreopanax',
-      'species': 'bogotensis'
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Oreopanax bogotensis',
+    taxon         : {
+      family : 'Araliaceae',
+      genus  : 'Oreopanax',
+      species: 'bogotensis',
     },
-    'commonNames': [
+    commonNames: [
       'Mano de oso'
     ],
-    url: 'https://www.google.com/search?q=Oreopanax+bogotensis&tbm=isch'
+    url: 'https://www.google.com/search?q=Oreopanax+bogotensis&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Bosque andino',
       'Subpáramo'
     ],
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Myrsine dependens',
-    'taxon'         : {
-      'family' : 'Myrsinaceae',
-      'genus'  : 'Myrsine',
-      'species': 'dependens'
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Myrsine dependens',
+    taxon         : {
+      family : 'Myrsinaceae',
+      genus  : 'Myrsine',
+      species: 'dependens',
     },
-    'commonNames': [
+    commonNames: [
       'Cucharo de páramo'
     ],
-    url: 'https://www.google.com/search?q=Myrsine+dependens&tbm=isch'
+    url: 'https://www.google.com/search?q=Myrsine+dependens&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Bosque andino'
     ],
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Myrica parvifolia',
-    'taxon'         : {
-      'family' : 'Myricaceae',
-      'genus'  : 'Myrica',
-      'species': 'parvifolia'
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Myrica parvifolia',
+    taxon         : {
+      family : 'Myricaceae',
+      genus  : 'Myrica',
+      species: 'parvifolia',
     },
-    'commonNames': [
+    commonNames: [
       'Laurel de cera'
     ],
-    url: 'https://www.google.com/search?q=Myrica+parvifolia&tbm=isch'
+    url: 'https://www.google.com/search?q=Myrica+parvifolia&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Bosque andino'
     ],
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Solanum ovalifolium',
-    'taxon'         : {
-      'family' : 'Solanaceae',
-      'genus'  : 'Solanum',
-      'species': 'ovalifolium'
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Solanum ovalifolium',
+    taxon         : {
+      family : 'Solanaceae',
+      genus  : 'Solanum',
+      species: 'ovalifolium',
     },
-    'commonNames': [
+    commonNames: [
       'Cucubo',
       'Tomatillo'
     ],
-    url: 'https://www.google.com/search?q=Solanum+ovalifolium&tbm=isch'
+    url: 'https://www.google.com/search?q=Solanum+ovalifolium&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Bosque andino'
     ],
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Croton bogotanus',
-    'taxon'         : {
-      'family' : 'Euphorbiaceae',
-      'genus'  : 'Croton',
-      'species': 'bogotanus'
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Croton bogotanus',
+    taxon         : {
+      family : 'Euphorbiaceae',
+      genus  : 'Croton',
+      species: 'bogotanus',
     },
-    'commonNames': [
+    commonNames: [
       'Sangregado'
     ],
-    url: 'https://www.google.com/search?q=Croton+bogotanus&tbm=isch'
+    url: 'https://www.google.com/search?q=Croton+bogotanus&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Bosque andino'
     ],
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Smallanthus pyramidalis',
-    'taxon'         : {
-      'family' : 'Asteraceae',
-      'genus'  : 'Smallanthus',
-      'species': 'pyramidalis'
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Smallanthus pyramidalis',
+    taxon         : {
+      family : 'Asteraceae',
+      genus  : 'Smallanthus',
+      species: 'pyramidalis',
     },
-    'commonNames': [
+    commonNames: [
       'Arboloco'
     ],
-    url: 'https://www.google.com/search?q=Smallanthus+pyramidalis&tbm=isch'
+    url: 'https://www.google.com/search?q=Smallanthus+pyramidalis&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Subpáramo'
     ],
-    'imageUrl'      : 'https://www.google.com/search?q=Vaccinium+floribundum&tbm=isch',
-    'regions'       : null,
-    'scientificName': 'Vaccinium floribundum',
-    'taxon'         : {
-      'family' : 'Ericaceae',
-      'genus'  : 'Vaccinium',
-      'species': 'floribundum'
+    imageUrl      : 'https://www.google.com/search?q=Vaccinium+floribundum&tbm=isch',
+    regions       : null,
+    scientificName: 'Vaccinium floribundum',
+    taxon         : {
+      family : 'Ericaceae',
+      genus  : 'Vaccinium',
+      species: 'floribundum',
     },
-    'commonNames': [
+    commonNames: [
       'Mortiño',
       'Agráz',
       'Agraz',
       'Mortiño de páramo'
     ],
-    url: 'https://www.google.com/search?q=Vaccinium+floribundum&tbm=isch'
+    url: 'https://www.google.com/search?q=Vaccinium+floribundum&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Subpáramo'
     ],
-    'imageUrl'      : 'https://www.google.com/search?q=Gaultheria+anastomosans&tbm=isch',
-    'regions'       : null,
-    'scientificName': 'Gaultheria anastomosans',
-    'taxon'         : {
-      'family' : 'Ericaceae',
-      'genus'  : 'Gaultheria',
-      'species': 'anastomosans'
+    imageUrl:
+      'https://www.google.com/search?q=Gaultheria+anastomosans&tbm=isch',
+    regions       : null,
+    scientificName: 'Gaultheria anastomosans',
+    taxon         : {
+      family : 'Ericaceae',
+      genus  : 'Gaultheria',
+      species: 'anastomosans',
     },
-    'commonNames': [
+    commonNames: [
       'Reventadera'
     ],
-    url: 'https://www.google.com/search?q=Gaultheria+anastomosans&tbm=isch'
+    url: 'https://www.google.com/search?q=Gaultheria+anastomosans&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Subpáramo'
     ],
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Macleania rupestris',
-    'taxon'         : {
-      'family' : 'Ericaceae',
-      'genus'  : 'Macleania',
-      'species': 'rupestris'
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Macleania rupestris',
+    taxon         : {
+      family : 'Ericaceae',
+      genus  : 'Macleania',
+      species: 'rupestris',
     },
-    'commonNames': [
+    commonNames: [
       'Uva camarona'
     ],
-    url: 'https://www.google.com/search?q=Macleania+rupestris&tbm=isch'
+    url: 'https://www.google.com/search?q=Macleania+rupestris&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Subpáramo'
     ],
-    'imageUrl'      : 'https://www.google.com/search?q=Miconia+squamulosa&tbm=isch',
-    'regions'       : null,
-    'scientificName': 'Miconia squamulosa',
-    'taxon'         : {
-      'family' : 'Melastomataceae',
-      'genus'  : 'Miconia',
-      'species': 'squamulosa'
+    imageUrl      : 'https://www.google.com/search?q=Miconia+squamulosa&tbm=isch',
+    regions       : null,
+    scientificName: 'Miconia squamulosa',
+    taxon         : {
+      family : 'Melastomataceae',
+      genus  : 'Miconia',
+      species: 'squamulosa',
     },
-    'commonNames': [
+    commonNames: [
       'Tuno esmeraldo'
     ],
-    url: 'https://www.google.com/search?q=Miconia+squamulosa&tbm=isch'
+    url: 'https://www.google.com/search?q=Miconia+squamulosa&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Subpáramo'
     ],
-    'imageUrl'      : 'https://www.google.com/search?q=Bucquetia+glutinosa&tbm=isch',
-    'regions'       : null,
-    'scientificName': 'Bucquetia glutinosa',
-    'taxon'         : {
-      'family' : 'Melastomataceae',
-      'genus'  : 'Bucquetia',
-      'species': 'glutinosa'
+    imageUrl      : 'https://www.google.com/search?q=Bucquetia+glutinosa&tbm=isch',
+    regions       : null,
+    scientificName: 'Bucquetia glutinosa',
+    taxon         : {
+      family : 'Melastomataceae',
+      genus  : 'Bucquetia',
+      species: 'glutinosa',
     },
-    'commonNames': [
+    commonNames: [
       'Saltón',
       'Charne',
       'Tuno pegajoso'
     ],
-    url: 'https://www.google.com/search?q=Bucquetia+glutinosa&tbm=isch'
+    url: 'https://www.google.com/search?q=Bucquetia+glutinosa&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Subpáramo'
     ],
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Tibouchina lepidota',
-    'taxon'         : {
-      'family' : 'Melastomataceae',
-      'genus'  : 'Tibouchina',
-      'species': 'lepidota'
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Tibouchina lepidota',
+    taxon         : {
+      family : 'Melastomataceae',
+      genus  : 'Tibouchina',
+      species: 'lepidota',
     },
-    'commonNames': [
+    commonNames: [
       'Sietecueros'
     ],
-    url: 'https://www.google.com/search?q=Tibouchina+lepidota&tbm=isch'
+    url: 'https://www.google.com/search?q=Tibouchina+lepidota&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Subpáramo',
       'Páramo'
     ],
-    'imageUrl'      : 'https://www.google.com/search?q=Escallonia myrtilloides&tbm=isch',
-    'regions'       : null,
-    'scientificName': 'Escallonia myrtilloides',
-    'taxon'         : {
-      'family' : 'Escalloniaceae',
-      'genus'  : 'Escallonia',
-      'species': 'myrtilloides'
+    imageUrl:
+      'https://www.google.com/search?q=Escallonia myrtilloides&tbm=isch',
+    regions       : null,
+    scientificName: 'Escallonia myrtilloides',
+    taxon         : {
+      family : 'Escalloniaceae',
+      genus  : 'Escallonia',
+      species: 'myrtilloides',
     },
-    'commonNames': [
+    commonNames: [
       'Rodamonte'
     ],
-    url: 'https://www.google.com/search?q=Escallonia+myrtilloides&tbm=isch'
+    url: 'https://www.google.com/search?q=Escallonia+myrtilloides&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Subpáramo'
     ],
-    'imageUrl'      : 'https://www.google.com/search?q=Baccharis+latifolia&tbm=isch',
-    'regions'       : null,
-    'scientificName': 'Baccharis latifolia',
-    'taxon'         : {
-      'family' : 'Asteraceae',
-      'genus'  : 'Baccharis',
-      'species': 'latifolia'
+    imageUrl      : 'https://www.google.com/search?q=Baccharis+latifolia&tbm=isch',
+    regions       : null,
+    scientificName: 'Baccharis latifolia',
+    taxon         : {
+      family : 'Asteraceae',
+      genus  : 'Baccharis',
+      species: 'latifolia',
     },
-    'commonNames': [
+    commonNames: [
       'Chilco común',
       'Chilco'
     ],
-    url: 'https://www.google.com/search?q=Baccharis+latifolia&tbm=isch'
+    url: 'https://www.google.com/search?q=Baccharis+latifolia&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Subpáramo'
     ],
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Baccharis bogotensis',
-    'taxon'         : {
-      'family' : 'Asteraceae',
-      'genus'  : 'Baccharis',
-      'species': 'bogotensis'
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Baccharis bogotensis',
+    taxon         : {
+      family : 'Asteraceae',
+      genus  : 'Baccharis',
+      species: 'bogotensis',
     },
-    'commonNames': [
+    commonNames: [
       'Ciro'
     ],
-    url: 'https://www.google.com/search?q=Baccharis+bogotensis&tbm=isch'
+    url: 'https://www.google.com/search?q=Baccharis+bogotensis&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Subpáramo'
     ],
-    'imageUrl'      : 'https://google.com/search?q=Diplostephium rosmarinifolium',
-    'regions'       : null,
-    'scientificName': 'Diplostephium rosmarinifolium',
-    'taxon'         : {
-      'family' : 'Asteraceae',
-      'genus'  : 'Diplostephium',
-      'species': 'rosmarinifolium'
+    imageUrl      : 'https://google.com/search?q=Diplostephium rosmarinifolium',
+    regions       : null,
+    scientificName: 'Diplostephium rosmarinifolium',
+    taxon         : {
+      family : 'Asteraceae',
+      genus  : 'Diplostephium',
+      species: 'rosmarinifolium',
     },
-    'commonNames': [
+    commonNames: [
       'Romero blanco',
       'Romero de páramo'
     ],
-    url: 'https://www.google.com/search?q=Diplostephium+rosmarinifolium&tbm=isch'
+    url: 'https://www.google.com/search?q=Diplostephium+rosmarinifolium&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Subpáramo'
     ],
-    'imageUrl': null,
-    'regions' : [
+    imageUrl: null,
+    regions : [
       'Sabana de Bogotá',
       'Boyacá'
     ],
-    'scientificName': 'Lupinus bogotensis',
-    'taxon'         : {
-      'family' : 'Fabaceae',
-      'genus'  : 'Lupinus',
-      'species': 'bogotensis'
+    scientificName: 'Lupinus bogotensis',
+    taxon         : {
+      family : 'Fabaceae',
+      genus  : 'Lupinus',
+      species: 'bogotensis',
     },
-    'commonNames': [
+    commonNames: [
       'Chochito',
       'Altramuz',
       'Chocho'
     ],
-    url: 'https://www.google.com/search?q=Lupinus+bogotensis&tbm=isch'
+    url: 'https://www.google.com/search?q=Lupinus+bogotensis&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Subpáramo'
     ],
-    'imageUrl'      : 'https://www.google.com/search?q=Symplocos+theiformis&tbm=isch',
-    'regions'       : null,
-    'scientificName': 'Symplocos theiformis',
-    'taxon'         : {
-      'family' : 'Symplocaceae',
-      'genus'  : 'Symplocos',
-      'species': 'theiformis'
+    imageUrl      : 'https://www.google.com/search?q=Symplocos+theiformis&tbm=isch',
+    regions       : null,
+    scientificName: 'Symplocos theiformis',
+    taxon         : {
+      family : 'Symplocaceae',
+      genus  : 'Symplocos',
+      species: 'theiformis',
     },
-    'commonNames': [
+    commonNames: [
       'Té de Bogotá'
     ],
-    url: 'https://www.google.com/search?q=Symplocos+theiformis&tbm=isch'
+    url: 'https://www.google.com/search?q=Symplocos+theiformis&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Subpáramo'
     ],
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Berberis rigidifolia',
-    'taxon'         : {
-      'family' : 'Berberidaceae',
-      'genus'  : 'Berberis',
-      'species': 'rigidifolia'
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Berberis rigidifolia',
+    taxon         : {
+      family : 'Berberidaceae',
+      genus  : 'Berberis',
+      species: 'rigidifolia',
     },
-    'commonNames': [
+    commonNames: [
       'Espino'
     ],
-    url: 'https://www.google.com/search?q=Berberis+rigidifolia&tbm=isch'
+    url: 'https://www.google.com/search?q=Berberis+rigidifolia&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Páramo'
     ],
-    'imageUrl'      : 'https://www.google.com/search?q=Espeletia+grandiflora&tbm=isch',
-    'regions'       : null,
-    'scientificName': 'Espeletia grandiflora',
-    'taxon'         : {
-      'family' : 'Asteraceae',
-      'genus'  : 'Espeletia',
-      'species': 'grandiflora'
+    imageUrl      : 'https://www.google.com/search?q=Espeletia+grandiflora&tbm=isch',
+    regions       : null,
+    scientificName: 'Espeletia grandiflora',
+    taxon         : {
+      family : 'Asteraceae',
+      genus  : 'Espeletia',
+      species: 'grandiflora',
     },
-    'commonNames': [
+    commonNames: [
       'Frailejón gigante',
       'Frailejón Mayor'
     ],
-    url: 'https://www.google.com/search?q=Espeletia+grandiflora&tbm=isch'
+    url: 'https://www.google.com/search?q=Espeletia+grandiflora&tbm=isch',
   },
   {
-    'conservationStatus': 'Endangered (EN)',
-    'ecosystems'        : [
+    conservationStatus: 'Endangered (EN)',
+    ecosystems        : [
       'Páramo'
     ],
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Espeletiopsis rabanalensis',
-    'taxon'         : {
-      'family' : 'Asteraceae',
-      'genus'  : 'Espeletiopsis',
-      'species': 'rabanalensis'
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Espeletiopsis rabanalensis',
+    taxon         : {
+      family : 'Asteraceae',
+      genus  : 'Espeletiopsis',
+      species: 'rabanalensis',
     },
-    'commonNames': [
+    commonNames: [
       'Frailejón de Rabanal'
     ],
-    url: 'https://www.google.com/search?q=Espeletiopsis+rabanalensis&tbm=isch'
+    url: 'https://www.google.com/search?q=Espeletiopsis+rabanalensis&tbm=isch',
   },
   {
-    'conservationStatus': 'Vulnerable (VU)',
-    'ecosystems'        : [
+    conservationStatus: 'Vulnerable (VU)',
+    ecosystems        : [
       'Páramo'
     ],
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Espeletia barclayana',
-    'taxon'         : {
-      'family' : 'Asteraceae',
-      'genus'  : 'Espeletia',
-      'species': 'barclayana'
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Espeletia barclayana',
+    taxon         : {
+      family : 'Asteraceae',
+      genus  : 'Espeletia',
+      species: 'barclayana',
     },
-    'commonNames': [
+    commonNames: [
       'Frailejón endémico'
     ],
-    url: 'https://www.google.com/search?q=Espeletia+barclayana&tbm=isch'
+    url: 'https://www.google.com/search?q=Espeletia+barclayana&tbm=isch',
   },
   {
-    'conservationStatus': 'Endangered (EN)',
-    'ecosystems'        : [
+    conservationStatus: 'Endangered (EN)',
+    ecosystems        : [
       'Páramo'
     ],
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Espeletia murilloi',
-    'taxon'         : {
-      'family' : 'Asteraceae',
-      'genus'  : 'Espeletia',
-      'species': 'murilloi'
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Espeletia murilloi',
+    taxon         : {
+      family : 'Asteraceae',
+      genus  : 'Espeletia',
+      species: 'murilloi',
     },
-    'commonNames': [
+    commonNames: [
       'Frailejón'
     ],
-    url: 'https://www.google.com/search?q=Espeletia+murilloi&tbm=isch'
+    url: 'https://www.google.com/search?q=Espeletia+murilloi&tbm=isch',
   },
   {
-    'conservationStatus': 'Vulnerable (VU)',
-    'ecosystems'        : [
+    conservationStatus: 'Vulnerable (VU)',
+    ecosystems        : [
       'Páramo'
     ],
-    'imageUrl'      : 'https://www.google.com/search?q=Polylepis+quadrijuga&tbm=isch',
-    'regions'       : null,
-    'scientificName': 'Polylepis quadrijuga',
-    'taxon'         : {
-      'family' : 'Rosaceae',
-      'genus'  : 'Polylepis',
-      'species': 'quadrijuga'
+    imageUrl      : 'https://www.google.com/search?q=Polylepis+quadrijuga&tbm=isch',
+    regions       : null,
+    scientificName: 'Polylepis quadrijuga',
+    taxon         : {
+      family : 'Rosaceae',
+      genus  : 'Polylepis',
+      species: 'quadrijuga',
     },
-    'commonNames': [
+    commonNames: [
       'Coloradito',
       'Siete Cueros',
       'Colorado'
     ],
-    url: 'https://www.google.com/search?q=Polylepis+quadrijuga&tbm=isch'
+    url: 'https://www.google.com/search?q=Polylepis+quadrijuga&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Páramo'
     ],
-    'imageUrl'      : 'https://www.google.com/search?q=Chusquea+tessellata&tbm=isch',
-    'regions'       : null,
-    'scientificName': 'Chusquea tessellata',
-    'taxon'         : {
-      'family' : 'Poaceae',
-      'genus'  : 'Chusquea',
-      'species': 'tessellata'
+    imageUrl      : 'https://www.google.com/search?q=Chusquea+tessellata&tbm=isch',
+    regions       : null,
+    scientificName: 'Chusquea tessellata',
+    taxon         : {
+      family : 'Poaceae',
+      genus  : 'Chusquea',
+      species: 'tessellata',
     },
-    'commonNames': [
+    commonNames: [
       'Chusque'
     ],
-    url: 'https://www.google.com/search?q=Chusquea+tessellata&tbm=isch'
+    url: 'https://www.google.com/search?q=Chusquea+tessellata&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Páramo'
     ],
-    'imageUrl'      : 'https://www.google.com/search?q=Calamagrostis+effusa&tbm=isch',
-    'regions'       : null,
-    'scientificName': 'Calamagrostis effusa',
-    'taxon'         : {
-      'family' : 'Poaceae',
-      'genus'  : 'Calamagrostis',
-      'species': 'effusa'
+    imageUrl      : 'https://www.google.com/search?q=Calamagrostis+effusa&tbm=isch',
+    regions       : null,
+    scientificName: 'Calamagrostis effusa',
+    taxon         : {
+      family : 'Poaceae',
+      genus  : 'Calamagrostis',
+      species: 'effusa',
     },
-    'commonNames': [
+    commonNames: [
       'Paja de páramo',
       'Pajonal',
       'Paja de páramo'
     ],
-    url: 'https://www.google.com/search?q=Calamagrostis+effusa&tbm=isch'
+    url: 'https://www.google.com/search?q=Calamagrostis+effusa&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : [
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : [
       'Páramo'
     ],
-    'imageUrl'      : 'https://www.google.com/search?q=Puya+nitida&tbm=isch',
-    'regions'       : null,
-    'scientificName': 'Puya nitida',
-    'taxon'         : {
-      'family' : 'Bromeliaceae',
-      'genus'  : 'Puya',
-      'species': 'nitida'
+    imageUrl      : 'https://www.google.com/search?q=Puya+nitida&tbm=isch',
+    regions       : null,
+    scientificName: 'Puya nitida',
+    taxon         : {
+      family : 'Bromeliaceae',
+      genus  : 'Puya',
+      species: 'nitida',
     },
-    'commonNames': [
+    commonNames: [
       'Puya',
       'Cardón'
     ],
-    url: 'https://www.google.com/search?q=Puya+nitida&tbm=isch'
+    url: 'https://www.google.com/search?q=Puya+nitida&tbm=isch',
   },
   {
-    'conservationStatus': 'Not Evaluated (NE)',
-    'ecosystems'        : [
+    conservationStatus: 'Not Evaluated (NE)',
+    ecosystems        : [
       'Páramo'
     ],
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Aragoa cleefii',
-    'taxon'         : {
-      'family' : 'Plantaginaceae',
-      'genus'  : 'Aragoa',
-      'species': 'cleefii'
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Aragoa cleefii',
+    taxon         : {
+      family : 'Plantaginaceae',
+      genus  : 'Aragoa',
+      species: 'cleefii',
     },
-    'commonNames': [
+    commonNames: [
       'Pino de páramo'
     ],
-    url: 'https://www.google.com/search?q=Aragoa+cleefii&tbm=isch'
+    url: 'https://www.google.com/search?q=Aragoa+cleefii&tbm=isch',
   },
   {
-    'conservationStatus': 'Not Evaluated (NE)',
-    'ecosystems'        : [
+    conservationStatus: 'Not Evaluated (NE)',
+    ecosystems        : [
       'Páramo'
     ],
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Scrobicaria ilicifolia',
-    'taxon'         : {
-      'family' : 'Asteraceae',
-      'genus'  : 'Scrobicaria',
-      'species': 'ilicifolia'
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Scrobicaria ilicifolia',
+    taxon         : {
+      family : 'Asteraceae',
+      genus  : 'Scrobicaria',
+      species: 'ilicifolia',
     },
-    'commonNames': [
+    commonNames: [
       'Margaritón andino'
     ],
-    url: 'https://www.google.com/search?q=Scrobicaria+ilicifolia&tbm=isch'
+    url: 'https://www.google.com/search?q=Scrobicaria+ilicifolia&tbm=isch',
   },
   {
-    'conservationStatus': 'Not Evaluated (NE)',
-    'ecosystems'        : [
+    conservationStatus: 'Not Evaluated (NE)',
+    ecosystems        : [
       'Páramo'
     ],
-    'imageUrl'      : null,
-    'regions'       : null,
-    'scientificName': 'Halenia asclepiadea',
-    'taxon'         : {
-      'family' : 'Gentianaceae',
-      'genus'  : 'Halenia',
-      'species': 'asclepiadea'
+    imageUrl      : null,
+    regions       : null,
+    scientificName: 'Halenia asclepiadea',
+    taxon         : {
+      family : 'Gentianaceae',
+      genus  : 'Halenia',
+      species: 'asclepiadea',
     },
-    'commonNames': [
+    commonNames: [
       'Cachitos'
     ],
-    url: 'https://www.google.com/search?q=Halenia+asclepiadea&tbm=isch'
+    url: 'https://www.google.com/search?q=Halenia+asclepiadea&tbm=isch',
   },
   {
-    'conservationStatus': 'Vulnerable (VU)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Espeletia+argentea&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Espeletia argentea',
-    'taxon'             : {
-      'family' : 'Asteraceae',
-      'genus'  : 'Espeletia',
-      'species': 'argentea'
+    conservationStatus: 'Vulnerable (VU)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Espeletia+argentea&tbm=isch',
+    regions           : null,
+    scientificName    : 'Espeletia argentea',
+    taxon             : {
+      family : 'Asteraceae',
+      genus  : 'Espeletia',
+      species: 'argentea',
     },
-    'commonNames': [
+    commonNames: [
       'Frailejón Plateado'
     ],
-    url: 'https://www.google.com/search?q=Espeletia+argentea&tbm=isch'
+    url: 'https://www.google.com/search?q=Espeletia+argentea&tbm=isch',
   },
   {
-    'conservationStatus': 'Vulnerable (VU)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Espeletia+corymbosa&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Espeletia corymbosa',
-    'taxon'             : {
-      'family' : 'Asteraceae',
-      'genus'  : 'Espeletia',
-      'species': 'corymbosa'
+    conservationStatus: 'Vulnerable (VU)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Espeletia+corymbosa&tbm=isch',
+    regions           : null,
+    scientificName    : 'Espeletia corymbosa',
+    taxon             : {
+      family : 'Asteraceae',
+      genus  : 'Espeletia',
+      species: 'corymbosa',
     },
-    'commonNames': [
+    commonNames: [
       'Frailejón Liso'
     ],
-    url: 'https://www.google.com/search?q=Espeletia+corymbosa&tbm=isch'
+    url: 'https://www.google.com/search?q=Espeletia+corymbosa&tbm=isch',
   },
   {
-    'conservationStatus': 'Endangered (EN)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Espeletia+grandiflora&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Espeletia rabanalensis',
-    'taxon'             : {
-      'family' : 'Asteraceae',
-      'genus'  : 'Espeletia',
-      'species': 'rabanalensis'
+    conservationStatus: 'Endangered (EN)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Espeletia+grandiflora&tbm=isch',
+    regions           : null,
+    scientificName    : 'Espeletia rabanalensis',
+    taxon             : {
+      family : 'Asteraceae',
+      genus  : 'Espeletia',
+      species: 'rabanalensis',
     },
-    'commonNames': [
+    commonNames: [
       'Frailejón de Rabanal'
     ],
-    url: 'https://www.google.com/search?q=Espeletia+rabanalensis&tbm=isch'
+    url: 'https://www.google.com/search?q=Espeletia+rabanalensis&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Hesperomeles+goudotiana&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Hesperomeles goudotiana',
-    'taxon'             : {
-      'family' : 'Rosaceae',
-      'genus'  : 'Hesperomeles',
-      'species': 'goudotiana'
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl:
+      'https://www.google.com/search?q=Hesperomeles+goudotiana&tbm=isch',
+    regions       : null,
+    scientificName: 'Hesperomeles goudotiana',
+    taxon         : {
+      family : 'Rosaceae',
+      genus  : 'Hesperomeles',
+      species: 'goudotiana',
     },
-    'commonNames': [
+    commonNames: [
       'Mortiño',
       'Cerote'
     ],
-    url: 'https://www.google.com/search?q=Hesperomeles+goudotiana&tbm=isch'
+    url: 'https://www.google.com/search?q=Hesperomeles+goudotiana&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Bejaria+resinosa&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Bejaria resinosa',
-    'taxon'             : {
-      'family' : 'Ericaceae',
-      'genus'  : 'Bejaria',
-      'species': 'resinosa'
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Bejaria+resinosa&tbm=isch',
+    regions           : null,
+    scientificName    : 'Bejaria resinosa',
+    taxon             : {
+      family : 'Ericaceae',
+      genus  : 'Bejaria',
+      species: 'resinosa',
     },
-    'commonNames': [
+    commonNames: [
       'Pegamosco'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://google.com/search?q=Puya goudotiana',
-    'regions'           : null,
-    'scientificName'    : 'Puya goudotiana',
-    'taxon'             : {
-      'family' : 'Bromeliaceae',
-      'genus'  : 'Puya',
-      'species': 'goudotiana'
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl          : 'https://google.com/search?q=Puya goudotiana',
+    regions           : null,
+    scientificName    : 'Puya goudotiana',
+    taxon             : {
+      family : 'Bromeliaceae',
+      genus  : 'Puya',
+      species: 'goudotiana',
     },
-    'commonNames': [
+    commonNames: [
       'Cardón',
       'Puya'
     ],
-    url: 'https://www.google.com/search?q=Puya+goudotiana&tbm=isch'
+    url: 'https://www.google.com/search?q=Puya+goudotiana&tbm=isch',
   },
   {
-    'conservationStatus': 'Not Evaluated (NE)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Lupinus+alopecuroides&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Lupinus alopecuroides',
-    'taxon'             : {
-      'family' : 'Fabaceae',
-      'genus'  : 'Lupinus',
-      'species': 'alopecuroides'
+    conservationStatus: 'Not Evaluated (NE)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Lupinus+alopecuroides&tbm=isch',
+    regions           : null,
+    scientificName    : 'Lupinus alopecuroides',
+    taxon             : {
+      family : 'Fabaceae',
+      genus  : 'Lupinus',
+      species: 'alopecuroides',
     },
-    'commonNames': [
+    commonNames: [
       'Chocho de páramo'
     ],
-    url: 'https://www.google.com/search?q=Lupinus+alopecuroides&tbm=isch'
+    url: 'https://www.google.com/search?q=Lupinus+alopecuroides&tbm=isch',
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Hypericum+juniperinum&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Hypericum juniperinum',
-    'taxon'             : {
-      'family' : 'Hypericaceae',
-      'genus'  : 'Hypericum',
-      'species': 'juniperinum'
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Hypericum+juniperinum&tbm=isch',
+    regions           : null,
+    scientificName    : 'Hypericum juniperinum',
+    taxon             : {
+      family : 'Hypericaceae',
+      genus  : 'Hypericum',
+      species: 'juniperinum',
     },
-    'commonNames': [
+    commonNames: [
       'Chite',
       'Guardarocío'
     ],
-    url: 'https://www.google.com/search?q=Hypericum+juniperinum&tbm=isch'
+    url: 'https://www.google.com/search?q=Hypericum+juniperinum&tbm=isch',
   },
   {
-    'conservationStatus': 'Not Evaluated (NE)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Pentacalia+pulchella&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Pentacalia pulchella',
-    'taxon'             : {
-      'family' : 'Asteraceae',
-      'genus'  : 'Pentacalia',
-      'species': 'pulchella'
+    conservationStatus: 'Not Evaluated (NE)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Pentacalia+pulchella&tbm=isch',
+    regions           : null,
+    scientificName    : 'Pentacalia pulchella',
+    taxon             : {
+      family : 'Asteraceae',
+      genus  : 'Pentacalia',
+      species: 'pulchella',
     },
-    'commonNames': [
+    commonNames: [
       'Arnica de monte'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://google.com/search?q=Gaiadendron punctatum',
-    'regions'           : null,
-    'scientificName'    : 'Gaiadendron punctatum',
-    'taxon'             : {
-      'family' : 'Loranthaceae',
-      'genus'  : 'Gaiadendron',
-      'species': 'punctatum'
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl          : 'https://google.com/search?q=Gaiadendron punctatum',
+    regions           : null,
+    scientificName    : 'Gaiadendron punctatum',
+    taxon             : {
+      family : 'Loranthaceae',
+      genus  : 'Gaiadendron',
+      species: 'punctatum',
     },
-    'commonNames': [
+    commonNames: [
       'Tagua',
       'Fosforito'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Vulnerable (VU)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://google.com/search?q=Clethra fimbriata',
-    'regions'           : null,
-    'scientificName'    : 'Clethra fimbriata',
-    'taxon'             : {
-      'family' : 'Clethraceae',
-      'genus'  : 'Clethra',
-      'species': 'fimbriata'
+    conservationStatus: 'Vulnerable (VU)',
+    ecosystems        : null,
+    imageUrl          : 'https://google.com/search?q=Clethra fimbriata',
+    regions           : null,
+    scientificName    : 'Clethra fimbriata',
+    taxon             : {
+      family : 'Clethraceae',
+      genus  : 'Clethra',
+      species: 'fimbriata',
     },
-    'commonNames': [
+    commonNames: [
       'Tibar'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Not Evaluated (NE)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://google.com/search?q=Paepalanthus alpinus',
-    'regions'           : null,
-    'scientificName'    : 'Paepalanthus alpinus',
-    'taxon'             : {
-      'family' : 'Eriocaulaceae',
-      'genus'  : 'Paepalanthus',
-      'species': 'alpinus'
+    conservationStatus: 'Not Evaluated (NE)',
+    ecosystems        : null,
+    imageUrl          : 'https://google.com/search?q=Paepalanthus alpinus',
+    regions           : null,
+    scientificName    : 'Paepalanthus alpinus',
+    taxon             : {
+      family : 'Eriocaulaceae',
+      genus  : 'Paepalanthus',
+      species: 'alpinus',
     },
-    'commonNames': [
+    commonNames: [
       'Estrella de páramo'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://google.com/search?q=Pernettya prostrata',
-    'regions'           : null,
-    'scientificName'    : 'Pernettya prostrata',
-    'taxon'             : {
-      'family' : 'Ericaceae',
-      'genus'  : 'Pernettya',
-      'species': 'prostrata'
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl          : 'https://google.com/search?q=Pernettya prostrata',
+    regions           : null,
+    scientificName    : 'Pernettya prostrata',
+    taxon             : {
+      family : 'Ericaceae',
+      genus  : 'Pernettya',
+      species: 'prostrata',
     },
-    'commonNames': [
+    commonNames: [
       'Reventadera',
       'Ericácea'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://google.com/search?q=Phytolacca bogotensis',
-    'regions'           : null,
-    'scientificName'    : 'Phytolacca bogotensis',
-    'taxon'             : {
-      'family' : 'Phytolaccaceae',
-      'genus'  : 'Phytolacca',
-      'species': 'bogotensis'
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl          : 'https://google.com/search?q=Phytolacca bogotensis',
+    regions           : null,
+    scientificName    : 'Phytolacca bogotensis',
+    taxon             : {
+      family : 'Phytolaccaceae',
+      genus  : 'Phytolacca',
+      species: 'bogotensis',
     },
-    'commonNames': [
+    commonNames: [
       'Guaba',
       'Jaboncillo'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Not Evaluated (NE)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://google.com/search?q=Arcytophyllum nitidum',
-    'regions'           : null,
-    'scientificName'    : 'Arcytophyllum nitidum',
-    'taxon'             : {
-      'family' : 'Rubiaceae',
-      'genus'  : 'Arcytophyllum',
-      'species': 'nitidum'
+    conservationStatus: 'Not Evaluated (NE)',
+    ecosystems        : null,
+    imageUrl          : 'https://google.com/search?q=Arcytophyllum nitidum',
+    regions           : null,
+    scientificName    : 'Arcytophyllum nitidum',
+    taxon             : {
+      family : 'Rubiaceae',
+      genus  : 'Arcytophyllum',
+      species: 'nitidum',
     },
-    'commonNames': [
+    commonNames: [
       'Piquito',
       'Mortiño'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Tibouchina+grossa&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Tibouchina grossa',
-    'taxon'             : {
-      'family' : 'Melastomataceae',
-      'genus'  : 'Tibouchina',
-      'species': 'grossa'
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Tibouchina+grossa&tbm=isch',
+    regions           : null,
+    scientificName    : 'Tibouchina grossa',
+    taxon             : {
+      family : 'Melastomataceae',
+      genus  : 'Tibouchina',
+      species: 'grossa',
     },
-    'commonNames': [
+    commonNames: [
       'Tuno roso',
       'Mayo'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://google.com/search?q=Oreopanax incisus',
-    'regions'           : null,
-    'scientificName'    : 'Oreopanax incisus',
-    'taxon'             : {
-      'family' : 'Araliaceae',
-      'genus'  : 'Oreopanax',
-      'species': 'incisus'
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl          : 'https://google.com/search?q=Oreopanax incisus',
+    regions           : null,
+    scientificName    : 'Oreopanax incisus',
+    taxon             : {
+      family : 'Araliaceae',
+      genus  : 'Oreopanax',
+      species: 'incisus',
     },
-    'commonNames': [
+    commonNames: [
       'Mano de Oso'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Passiflora+mixta&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Passiflora mixta',
-    'taxon'             : {
-      'family' : 'Passifloraceae',
-      'genus'  : 'Passiflora',
-      'species': 'mixta'
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Passiflora+mixta&tbm=isch',
+    regions           : null,
+    scientificName    : 'Passiflora mixta',
+    taxon             : {
+      family : 'Passifloraceae',
+      genus  : 'Passiflora',
+      species: 'mixta',
     },
-    'commonNames': [
+    commonNames: [
       'Curuba de monte'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Not Evaluated (NE)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://google.com/search?q=Salvia rufula',
-    'regions'           : null,
-    'scientificName'    : 'Salvia rufula',
-    'taxon'             : {
-      'family' : 'Lamiaceae',
-      'genus'  : 'Salvia',
-      'species': 'rufula'
+    conservationStatus: 'Not Evaluated (NE)',
+    ecosystems        : null,
+    imageUrl          : 'https://google.com/search?q=Salvia rufula',
+    regions           : null,
+    scientificName    : 'Salvia rufula',
+    taxon             : {
+      family : 'Lamiaceae',
+      genus  : 'Salvia',
+      species: 'rufula',
     },
-    'commonNames': [
+    commonNames: [
       'Salvia roja'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Endangered (EN)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Espeletia+chocontana&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Espeletia chocontana',
-    'taxon'             : {
-      'family' : 'Asteraceae',
-      'genus'  : 'Espeletia',
-      'species': 'chocontana'
+    conservationStatus: 'Endangered (EN)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Espeletia+chocontana&tbm=isch',
+    regions           : null,
+    scientificName    : 'Espeletia chocontana',
+    taxon             : {
+      family : 'Asteraceae',
+      genus  : 'Espeletia',
+      species: 'chocontana',
     },
-    'commonNames': [
+    commonNames: [
       'Frailejón de Chocontá'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Endangered (EN)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Espeletiopsis+corymbosa&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Espeletiopsis corymbosa',
-    'taxon'             : {
-      'family' : 'Asteraceae',
-      'genus'  : 'Espeletiopsis',
-      'species': 'corymbosa'
+    conservationStatus: 'Endangered (EN)',
+    ecosystems        : null,
+    imageUrl:
+      'https://www.google.com/search?q=Espeletiopsis+corymbosa&tbm=isch',
+    regions       : null,
+    scientificName: 'Espeletiopsis corymbosa',
+    taxon         : {
+      family : 'Asteraceae',
+      genus  : 'Espeletiopsis',
+      species: 'corymbosa',
     },
-    'commonNames': [
+    commonNames: [
       'Frailejón de Piedra'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Endangered (EN)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Aragoa+cupressina&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Aragoa cupressina',
-    'taxon'             : {
-      'family' : 'Plantaginaceae',
-      'genus'  : 'Aragoa',
-      'species': 'cupressina'
+    conservationStatus: 'Endangered (EN)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Aragoa+cupressina&tbm=isch',
+    regions           : null,
+    scientificName    : 'Aragoa cupressina',
+    taxon             : {
+      family : 'Plantaginaceae',
+      genus  : 'Aragoa',
+      species: 'cupressina',
     },
-    'commonNames': [
+    commonNames: [
       'Romero de Páramo'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Endangered (EN)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Aragoa+abietina&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Aragoa abietina',
-    'taxon'             : {
-      'family' : 'Plantaginaceae',
-      'genus'  : 'Aragoa',
-      'species': 'abietina'
+    conservationStatus: 'Endangered (EN)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Aragoa+abietina&tbm=isch',
+    regions           : null,
+    scientificName    : 'Aragoa abietina',
+    taxon             : {
+      family : 'Plantaginaceae',
+      genus  : 'Aragoa',
+      species: 'abietina',
     },
-    'commonNames': [
+    commonNames: [
       'Romero'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Not Evaluated (NE)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Aetanthus+mutisii&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Aetanthus mutisii',
-    'taxon'             : {
-      'family' : 'Loranthaceae',
-      'genus'  : 'Aetanthus',
-      'species': 'mutisii'
+    conservationStatus: 'Not Evaluated (NE)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Aetanthus+mutisii&tbm=isch',
+    regions           : null,
+    scientificName    : 'Aetanthus mutisii',
+    taxon             : {
+      family : 'Loranthaceae',
+      genus  : 'Aetanthus',
+      species: 'mutisii',
     },
-    'commonNames': [
+    commonNames: [
       'Matapalo',
       'Injerto'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Passiflora+bogotensis&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Passiflora bogotensis',
-    'taxon'             : {
-      'family' : 'Passifloraceae',
-      'genus'  : 'Passiflora',
-      'species': 'bogotensis'
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Passiflora+bogotensis&tbm=isch',
+    regions           : null,
+    scientificName    : 'Passiflora bogotensis',
+    taxon             : {
+      family : 'Passifloraceae',
+      genus  : 'Passiflora',
+      species: 'bogotensis',
     },
-    'commonNames': [
+    commonNames: [
       'Curuba de monte'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Mutisia+clematis&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Mutisia clematis',
-    'taxon'             : {
-      'family' : 'Asteraceae',
-      'genus'  : 'Mutisia',
-      'species': 'clematis'
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Mutisia+clematis&tbm=isch',
+    regions           : null,
+    scientificName    : 'Mutisia clematis',
+    taxon             : {
+      family : 'Asteraceae',
+      genus  : 'Mutisia',
+      species: 'clematis',
     },
-    'commonNames': [
+    commonNames: [
       'Clavellino',
       'Bejuco'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Endangered (EN)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Masdevallia+coccinea&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Masdevallia coccinea',
-    'taxon'             : {
-      'family' : 'Orchidaceae',
-      'genus'  : 'Masdevallia',
-      'species': 'coccinea'
+    conservationStatus: 'Endangered (EN)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Masdevallia+coccinea&tbm=isch',
+    regions           : null,
+    scientificName    : 'Masdevallia coccinea',
+    taxon             : {
+      family : 'Orchidaceae',
+      genus  : 'Masdevallia',
+      species: 'coccinea',
     },
-    'commonNames': [
+    commonNames: [
       'Orquídea Banderita'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Endangered (EN)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Odontoglossum+crispum&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Odontoglossum crispum',
-    'taxon'             : {
-      'family' : 'Orchidaceae',
-      'genus'  : 'Odontoglossum',
-      'species': 'crispum'
+    conservationStatus: 'Endangered (EN)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Odontoglossum+crispum&tbm=isch',
+    regions           : null,
+    scientificName    : 'Odontoglossum crispum',
+    taxon             : {
+      family : 'Orchidaceae',
+      genus  : 'Odontoglossum',
+      species: 'crispum',
     },
-    'commonNames': [
+    commonNames: [
       'Aguadija'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Endangered (EN)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Viburnum+suratense&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Viburnum suratense',
-    'taxon'             : {
-      'family' : 'Adoxaceae',
-      'genus'  : 'Viburnum',
-      'species': 'suratense'
+    conservationStatus: 'Endangered (EN)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Viburnum+suratense&tbm=isch',
+    regions           : null,
+    scientificName    : 'Viburnum suratense',
+    taxon             : {
+      family : 'Adoxaceae',
+      genus  : 'Viburnum',
+      species: 'suratense',
     },
-    'commonNames': [
+    commonNames: [
       'Garrocho'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Vulnerable (VU)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Ceroxylon+vogelianum&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Ceroxylon vogelianum',
-    'taxon'             : {
-      'family' : 'Arecaceae',
-      'genus'  : 'Ceroxylon',
-      'species': 'vogelianum'
+    conservationStatus: 'Vulnerable (VU)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Ceroxylon+vogelianum&tbm=isch',
+    regions           : null,
+    scientificName    : 'Ceroxylon vogelianum',
+    taxon             : {
+      family : 'Arecaceae',
+      genus  : 'Ceroxylon',
+      species: 'vogelianum',
     },
-    'commonNames': [
+    commonNames: [
       'Palma de Cera'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Centropogon+granulosus&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Centropogon granulosus',
-    'taxon'             : {
-      'family' : 'Campanulaceae',
-      'genus'  : 'Centropogon',
-      'species': 'granulosus'
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Centropogon+granulosus&tbm=isch',
+    regions           : null,
+    scientificName    : 'Centropogon granulosus',
+    taxon             : {
+      family : 'Campanulaceae',
+      genus  : 'Centropogon',
+      species: 'granulosus',
     },
-    'commonNames': [
+    commonNames: [
       'Campanilla'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Hypericum+goyanesii&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Hypericum goyanesii',
-    'taxon'             : {
-      'family' : 'Hypericaceae',
-      'genus'  : 'Hypericum',
-      'species': 'goyanesii'
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Hypericum+goyanesii&tbm=isch',
+    regions           : null,
+    scientificName    : 'Hypericum goyanesii',
+    taxon             : {
+      family : 'Hypericaceae',
+      genus  : 'Hypericum',
+      species: 'goyanesii',
     },
-    'commonNames': [
+    commonNames: [
       'Chite'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Buddleja+bullata&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Buddleja bullata',
-    'taxon'             : {
-      'family' : 'Scrophulariaceae',
-      'genus'  : 'Buddleja',
-      'species': 'bullata'
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl          : 'https://www.google.com/search?q=Buddleja+bullata&tbm=isch',
+    regions           : null,
+    scientificName    : 'Buddleja bullata',
+    taxon             : {
+      family : 'Scrophulariaceae',
+      genus  : 'Buddleja',
+      species: 'bullata',
     },
-    'commonNames': [
+    commonNames: [
       'Salvia de Páramo'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : 'https://www.google.com/search?q=Hedyosmum+bonplandianum&tbm=isch',
-    'regions'           : null,
-    'scientificName'    : 'Hedyosmum bonplandianum',
-    'taxon'             : {
-      'family' : 'Chloranthaceae',
-      'genus'  : 'Hedyosmum',
-      'species': 'bonplandianum'
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl:
+      'https://www.google.com/search?q=Hedyosmum+bonplandianum&tbm=isch',
+    regions       : null,
+    scientificName: 'Hedyosmum bonplandianum',
+    taxon         : {
+      family : 'Chloranthaceae',
+      genus  : 'Hedyosmum',
+      species: 'bonplandianum',
     },
-    'commonNames': [
+    commonNames: [
       'Granizo'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': null,
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    'regions'           : [
+    conservationStatus: null,
+    ecosystems        : null,
+    imageUrl          : null,
+    regions           : [
       'Cundinamarca',
       'Boyacá',
       'Santander'
     ],
-    'scientificName': 'Myrica pubescens',
-    'taxon'         : {
-      'genus'  : 'Myrica',
-      'species': 'pubescens',
-      'family' : null
+    scientificName: 'Myrica pubescens',
+    taxon         : {
+      genus  : 'Myrica',
+      species: 'pubescens',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'Laurel de Cera'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': null,
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    'regions'           : [
+    conservationStatus: null,
+    ecosystems        : null,
+    imageUrl          : null,
+    regions           : [
       'Lower Boyacá',
       'Santander'
     ],
-    'scientificName': 'Inga edulis',
-    'taxon'         : {
-      'genus'  : 'Inga',
-      'species': 'edulis',
-      'family' : null
+    scientificName: 'Inga edulis',
+    taxon         : {
+      genus  : 'Inga',
+      species: 'edulis',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'Guamo'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': null,
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    'regions'           : [
+    conservationStatus: null,
+    ecosystems        : null,
+    imageUrl          : null,
+    regions           : [
       'Santander',
       'Sub-Andean zones'
     ],
-    'scientificName': 'Erythrina poeppigiana',
-    'taxon'         : {
-      'genus'  : 'Erythrina',
-      'species': 'poeppigiana',
-      'family' : null
+    scientificName: 'Erythrina poeppigiana',
+    taxon         : {
+      genus  : 'Erythrina',
+      species: 'poeppigiana',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'Bucare'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': null,
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    'regions'           : [
+    conservationStatus: null,
+    ecosystems        : null,
+    imageUrl          : null,
+    regions           : [
       'Cundinamarca',
       'Boyacá'
     ],
-    'scientificName': 'Erythrina edulis',
-    'taxon'         : {
-      'genus'  : 'Erythrina',
-      'species': 'edulis',
-      'family' : null
+    scientificName: 'Erythrina edulis',
+    taxon         : {
+      genus  : 'Erythrina',
+      species: 'edulis',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'Chachafruto'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': null,
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    url                 : null,
-    'scientificName'    : 'Dalea coerulea',
-    'regions'           : [
+    conservationStatus: null,
+    ecosystems        : null,
+    imageUrl          : null,
+    url               : null,
+    scientificName    : 'Dalea coerulea',
+    regions           : [
       'High Paramos of Boyacá'
     ],
-    'taxon': {
-      'genus'  : 'Dalea',
-      'species': 'coerulea',
-      'family' : null
+    taxon: {
+      genus  : 'Dalea',
+      species: 'coerulea',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'Dalea'
     ],
   },
   {
-    'conservationStatus': null,
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    'regions'           : [
+    conservationStatus: null,
+    ecosystems        : null,
+    imageUrl          : null,
+    regions           : [
       'Cundinamarca',
       'Boyacá',
       'Santander'
     ],
-    'scientificName': 'Desmodium incanum',
-    'taxon'         : {
-      'genus'  : 'Desmodium',
-      'species': 'incanum',
-      'family' : null
+    scientificName: 'Desmodium incanum',
+    taxon         : {
+      genus  : 'Desmodium',
+      species: 'incanum',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'Pega Pega'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': null,
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    'regions'           : [
+    conservationStatus: null,
+    ecosystems        : null,
+    imageUrl          : null,
+    regions           : [
       'Altiplano Cundiboyacense'
     ],
-    'scientificName': 'Vicia andicola',
-    'taxon'         : {
-      'genus'  : 'Vicia',
-      'species': 'andicola',
-      'family' : null
+    scientificName: 'Vicia andicola',
+    taxon         : {
+      genus  : 'Vicia',
+      species: 'andicola',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'Vicia Endémica'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': null,
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    'regions'           : [
+    conservationStatus: null,
+    ecosystems        : null,
+    imageUrl          : null,
+    regions           : [
       'Chicamocha Canyon',
       'Santander'
     ],
-    'scientificName': 'Albizia carbonaria',
-    'taxon'         : {
-      'genus'  : 'Albizia',
-      'species': 'carbonaria',
-      'family' : null
+    scientificName: 'Albizia carbonaria',
+    taxon         : {
+      genus  : 'Albizia',
+      species: 'carbonaria',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'Carbonero'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Extinct (EX)',
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    'regions'           : [],
-    'scientificName'    : 'example EX',
-    'taxon'             : {
-      'genus'  : '',
-      'species': '',
-      'family' : null
+    conservationStatus: 'Extinct (EX)',
+    ecosystems        : null,
+    imageUrl          : null,
+    regions           : [],
+    scientificName    : 'example EX',
+    taxon             : {
+      genus  : '',
+      species: '',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'example EX'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Extinct in the Wild (EW)',
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    'regions'           : [],
-    'scientificName'    : 'example EW',
-    'taxon'             : {
-      'genus'  : '',
-      'species': '',
-      'family' : null
+    conservationStatus: 'Extinct in the Wild (EW)',
+    ecosystems        : null,
+    imageUrl          : null,
+    regions           : [],
+    scientificName    : 'example EW',
+    taxon             : {
+      genus  : '',
+      species: '',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'example EW'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Critically Endangered (CR)',
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    'regions'           : [],
-    'scientificName'    : 'example CR',
-    'taxon'             : {
-      'genus'  : '',
-      'species': '',
-      'family' : null
+    conservationStatus: 'Critically Endangered (CR)',
+    ecosystems        : null,
+    imageUrl          : null,
+    regions           : [],
+    scientificName    : 'example CR',
+    taxon             : {
+      genus  : '',
+      species: '',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'example CR'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Endangered (EN)',
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    'regions'           : [],
-    'scientificName'    : 'example EN',
-    'taxon'             : {
-      'genus'  : '',
-      'species': '',
-      'family' : null
+    conservationStatus: 'Endangered (EN)',
+    ecosystems        : null,
+    imageUrl          : null,
+    regions           : [],
+    scientificName    : 'example EN',
+    taxon             : {
+      genus  : '',
+      species: '',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'example EN'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Vulnerable (VU)',
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    'regions'           : [],
-    'scientificName'    : 'example VU',
-    'taxon'             : {
-      'genus'  : '',
-      'species': '',
-      'family' : null
+    conservationStatus: 'Vulnerable (VU)',
+    ecosystems        : null,
+    imageUrl          : null,
+    regions           : [],
+    scientificName    : 'example VU',
+    taxon             : {
+      genus  : '',
+      species: '',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'example VU'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Near Threatened (NT)',
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    'regions'           : [],
-    'scientificName'    : 'example NT',
-    'taxon'             : {
-      'genus'  : '',
-      'species': '',
-      'family' : null
+    conservationStatus: 'Near Threatened (NT)',
+    ecosystems        : null,
+    imageUrl          : null,
+    regions           : [],
+    scientificName    : 'example NT',
+    taxon             : {
+      genus  : '',
+      species: '',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'example NT'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Least Concern (LC)',
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    'regions'           : [],
-    'scientificName'    : 'example LC',
-    'taxon'             : {
-      'genus'  : '',
-      'species': '',
-      'family' : null
+    conservationStatus: 'Least Concern (LC)',
+    ecosystems        : null,
+    imageUrl          : null,
+    regions           : [],
+    scientificName    : 'example LC',
+    taxon             : {
+      genus  : '',
+      species: '',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'example LC'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Data Deficient (DD)',
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    'regions'           : [],
-    'scientificName'    : 'example DD',
-    'taxon'             : {
-      'genus'  : '',
-      'species': '',
-      'family' : null
+    conservationStatus: 'Data Deficient (DD)',
+    ecosystems        : null,
+    imageUrl          : null,
+    regions           : [],
+    scientificName    : 'example DD',
+    taxon             : {
+      genus  : '',
+      species: '',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'example DD'
     ],
-    url: null
+    url: null,
   },
   {
-    'conservationStatus': 'Not Evaluated (NE)',
-    'ecosystems'        : null,
-    'imageUrl'          : null,
-    'regions'           : [],
-    'scientificName'    : 'example NE',
-    'taxon'             : {
-      'genus'  : '',
-      'species': '',
-      'family' : null
+    conservationStatus: 'Not Evaluated (NE)',
+    ecosystems        : null,
+    imageUrl          : null,
+    regions           : [],
+    scientificName    : 'example NE',
+    taxon             : {
+      genus  : '',
+      species: '',
+      family : null,
     },
-    'commonNames': [
+    commonNames: [
       'example NE'
     ],
-    url: null
-  }
+    url: null,
+  },
 ];
 
 const mergePlants = ( data: PlantData[] ) => {
   const mergedObj = data.reduce(
     (
-      acc: Record<string, PlantData>, current
+      acc: Record<string, PlantData>, current 
     ) => {
       const key = current.scientificName;
 
@@ -1617,9 +1625,13 @@ const mergePlants = ( data: PlantData[] ) => {
             : [],
           taxon: current.taxon
             ? {
-                ...current.taxon
+                ...current.taxon,
               }
-            : {}
+            : {
+                family : null,
+                genus  : '',
+                species: '',
+              },
         };
       } else {
       // Plant exists: merge the new data into the existing object
@@ -1630,25 +1642,26 @@ const mergePlants = ( data: PlantData[] ) => {
           existing.commonNames = Array.from( new Set( [
             ...existing.commonNames,
             ...current.commonNames
-          ] ) );
+          ] ), );
         }
 
         if ( current.ecosystems ) {
           existing.ecosystems = Array.from( new Set( [
             ...( existing.ecosystems || [] ),
             ...current.ecosystems
-          ] ) );
+          ] ), );
         }
 
         if ( current.regions ) {
           existing.regions = Array.from( new Set( [
             ...( existing.regions || [] ),
             ...current.regions
-          ] ) );
+          ] ), );
         }
 
         // Prefer non-null values for top-level attributes
-        existing.conservationStatus = existing.conservationStatus || current.conservationStatus;
+        existing.conservationStatus
+          = existing.conservationStatus || current.conservationStatus;
         existing.url = existing.url || current.url; // Added URL preservation
         existing.imageUrl = existing.imageUrl || current.imageUrl;
 
@@ -1663,7 +1676,7 @@ const mergePlants = ( data: PlantData[] ) => {
       }
 
       return acc;
-    }, {}
+    }, {} 
   );
 
   return Object.values( mergedObj );
@@ -1678,21 +1691,21 @@ console.log( finalCleanArray );
 try {
   // JSON.stringify formatting: (data, replacer, spaces for indentation)
   const jsonString = JSON.stringify(
-    finalCleanArray, null, 2
+    finalCleanArray, null, 2 
   );
   const jsonBaseData = JSON.stringify(
-    plantData, null, 2
+    plantData, null, 2 
   );
 
   fs.writeFileSync(
-    'merged_plants.json', jsonString, 'utf8'
+    'merged_plants.json', jsonString, 'utf8' 
   );
   fs.writeFileSync(
-    'basePlants.json', jsonBaseData
+    'basePlants.json', jsonBaseData 
   );
   console.log( 'Success! The clean data has been saved to merged_plants.json' );
 } catch ( err ) {
   console.error(
-    'Error writing to file:', err
+    'Error writing to file:', err 
   );
 }

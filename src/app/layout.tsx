@@ -1,25 +1,16 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import '#@/styles/globals.css';
+import 'material-symbols';
 import Layout from '#@/components/layout';
 import { ReactNode } from 'react';
 import { josefina, playDisp, ptserif, radio, raleway } from '#@/styles/fonts';
 import PushManagerComponent from '#@/components/PushManager';
 import { PushNotificationProvider } from './context/pushNotificationContext';
-
-const geistSans = Geist( {
-  variable: '--font-geist-sans',
-  subsets : [
-    'latin'
-  ],
-} );
-
-const geistMono = Geist_Mono( {
-  variable: '--font-geist-mono',
-  subsets : [
-    'latin'
-  ],
-} );
+import { CssBaseline,
+  InitColorSchemeScript,
+  ThemeProvider, } from '@mui/material';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import theme from './theme';
 
 export const metadata: Metadata = {
   title      : 'Create Next App',
@@ -32,12 +23,29 @@ export default function RootLayout( {
   children: ReactNode;
 }> ) {
   return (
-    <html lang="es-CO">
-      <body className={ `${ playDisp.variable } ${ josefina.className } ${ raleway.variable } ${ radio.variable } ${ ptserif.variable } [ color-scheme: light dark ]` }>
-        <PushNotificationProvider>
-          <PushManagerComponent />
-          <Layout>{ children }</Layout>
-        </PushNotificationProvider>
+    <html
+      lang="es-CO"
+      suppressHydrationWarning
+    >
+      <body
+        className={`${ playDisp.variable } ${ josefina.className } ${ raleway.variable } ${ radio.variable } ${ ptserif.variable } [ color-scheme: light dark ]`}
+      >
+        <InitColorSchemeScript
+          attribute="class"
+          defaultMode="system"
+        />
+        <AppRouterCacheProvider>
+          <ThemeProvider
+            theme={theme}
+            defaultMode="system"
+          >
+            <CssBaseline />
+            <PushNotificationProvider>
+              <PushManagerComponent />
+              <Layout>{children}</Layout>
+            </PushNotificationProvider>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

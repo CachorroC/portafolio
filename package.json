@@ -22,8 +22,10 @@
     "@emotion/styled": "^11.14.1",
     "@eslint/js": "^10.0.1",
     "@mui/icons-material": "^7.3.9",
+    "@mui/lab": "7.0.1-beta.23",
     "@mui/material": "^7.3.9",
-    "@mui/x-data-grid": "^8.27.5",
+    "@mui/material-nextjs": "^7.3.9",
+    "@mui/x-data-grid": "^8.0.0",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@types/web-push": "^3.6.4",
     "dotenv": "^17.3.1",
@@ -48,8 +50,9 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^9",
+    "eslint": "^10.0.3",
     "eslint-config-next": "16.1.6",
-    "typescript": "^5"
+    "typescript": "^5",
+    "typescript-plugin-css-modules": "^5.2.0"
   }
 }

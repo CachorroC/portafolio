@@ -2,7 +2,8 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { subscribeUser, unSubscribeUser } from '#@/app/actions/notifications';
-import { getOrCreateDeviceId, urlBase64ToUint8Array } from '#@/lib/utils/pushUtils';
+import { getOrCreateDeviceId,
+  urlBase64ToUint8Array, } from '#@/lib/utils/pushUtils';
 
 interface PushContextType {
   isSupported        : boolean;
@@ -13,11 +14,13 @@ interface PushContextType {
   unsubscribeFromPush: () => Promise<void>;
 }
 
-const PushNotificationContext = createContext<PushContextType | undefined>( undefined );
+const PushNotificationContext = createContext<PushContextType | undefined>( undefined, );
 
 export function PushNotificationProvider( {
-  children
-}: { children: React.ReactNode } ) {
+  children,
+}: {
+  children: React.ReactNode;
+} ) {
   const [
     isSupported,
     setIsSupported
@@ -33,7 +36,7 @@ export function PushNotificationProvider( {
   const [
     subscription,
     setSubscription
-  ] = useState<PushSubscription | null>( null );
+  ] = useState<PushSubscription | null>( null, );
 
   useEffect(
     () => {
@@ -50,7 +53,7 @@ export function PushNotificationProvider( {
           }
         } );
       }
-    }, []
+    }, [] 
   );
 
   const subscribeToPush = async () => {
@@ -77,7 +80,7 @@ export function PushNotificationProvider( {
       const serializedSub = sub.toJSON() as any;
 
       const response = await subscribeUser(
-        serializedSub, deviceId
+        serializedSub, deviceId 
       );
 
       if ( response?.success ) {
@@ -86,7 +89,7 @@ export function PushNotificationProvider( {
       }
     } catch ( error ) {
       console.error(
-        'Subscription failed:', error
+        'Subscription failed:', error 
       );
     }
   };
@@ -106,7 +109,7 @@ export function PushNotificationProvider( {
       }
     } catch ( error ) {
       console.error(
-        'Error unsubscribing', error
+        'Error unsubscribing', error 
       );
     }
   };
@@ -132,7 +135,7 @@ export function usePushNotifications() {
   const context = useContext( PushNotificationContext );
 
   if ( context === undefined ) {
-    throw new Error( 'usePushNotifications must be used within a PushNotificationProvider' );
+    throw new Error( 'usePushNotifications must be used within a PushNotificationProvider', );
   }
 
   return context;

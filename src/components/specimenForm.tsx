@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
-import { PlantData } from '#@/lib/types/plantBase';
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+
+import React, { useState, ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { Box,
   TextField,
   Button,
@@ -14,6 +14,7 @@ import { Box,
   Select,
   MenuItem, } from '@mui/material';
 import { upsertSpecimen } from '#@/app/actions/specimen';
+import { PlantData, Ecosystem } from '#@/lib/types/plantBase'; // Adjust import as necessary
 
 type ArrayKeys = 'ecosystems' | 'regions' | 'commonNames';
 
@@ -29,20 +30,28 @@ const conservationStatusOptions = [
   'Data Deficient (DD)',
 ];
 
+// Added predefined options for Ecosystem
+const ecosystemOptions: Ecosystem[] = [
+  'Bosque andino',
+  'Subpáramo',
+  'Páramo'
+];
+
 export default function SpecimenForm( {
   initialData,
+  setIsEditing,
 }: {
-  initialData: PlantData;
+  initialData : PlantData;
+  setIsEditing: Dispatch<SetStateAction<boolean>>;
 } ) {
   const [
     formData,
     setFormData
   ] = useState<PlantData>( initialData );
 
-  // MUI TextFields trigger a ChangeEvent on input or textarea elements
   const handleInputChange = ( e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, ) => {
     const {
-      name, value
+      name, value 
     } = e.target;
     setFormData( ( prev ) => {
       return {
@@ -54,7 +63,7 @@ export default function SpecimenForm( {
 
   const handleTaxonChange = ( e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, ) => {
     const {
-      name, value
+      name, value 
     } = e.target;
     setFormData( ( prev ) => {
       return {
@@ -101,7 +110,7 @@ export default function SpecimenForm( {
   };
 
   const removeArrayItem = (
-    arrayName: ArrayKeys, index: number
+    arrayName: ArrayKeys, index: number 
   ) => {
     setFormData( ( prev ) => {
       const currentArray = prev[ arrayName ] || [];
@@ -109,7 +118,7 @@ export default function SpecimenForm( {
       return {
         ...prev,
         [ arrayName ]: currentArray.filter( (
-          _, i
+          _, i 
         ) => {
           return i !== index;
         } ),
@@ -117,30 +126,26 @@ export default function SpecimenForm( {
     } );
   };
 
-  const handleSubmit = async ( e ) => {
+  const handleSubmit = async ( e: React.FormEvent ) => {
     e.preventDefault();
 
     try {
-      // Call the server action directly
       const response = await upsertSpecimen( formData );
 
       if ( response.success && response.data ) {
-        // Update the form state with the exact data returned from MongoDB
-        // This ensures your UI is perfectly in sync with the database (including the new _id)
         setFormData( response.data as any as PlantData );
-
         console.log(
-          'Successfully saved to MongoDB:', response.data
+          'Successfully saved to MongoDB:', response.data 
         );
-        // You might want to add a toast notification here!
+        setIsEditing( false );
       } else {
         console.error(
-          'Failed to save:', response.error
+          'Failed to save:', response.error 
         );
       }
     } catch ( error ) {
       console.error(
-        'Network or server error:', error
+        'Network or server error:', error 
       );
     }
   };
@@ -172,7 +177,7 @@ export default function SpecimenForm( {
           Edit Specimen
         </Typography>
 
-        {/* --- STANDARD STRING INPUT --- */}
+        {/* --- STANDARD STRING INPUTS --- */}
         <TextField
           label="Scientific Name"
           name="scientificName"
@@ -181,34 +186,47 @@ export default function SpecimenForm( {
           onChange={handleInputChange}
           fullWidth
         />
+
         <TextField
-          label="Conservation Status"
-          name="conservationStatus"
+          label="URL (Source/Reference)"
+          name="url"
           variant="outlined"
-          value={formData.conservationStatus ?? ''}
+          value={formData.url ?? ''}
           onChange={handleInputChange}
           fullWidth
         />
+
+        <TextField
+          label="Image URL"
+          name="imageUrl"
+          variant="outlined"
+          value={formData.imageUrl ?? ''}
+          onChange={handleInputChange}
+          fullWidth
+        />
+
+        {/* --- CONSERVATION STATUS (Dropdown only) --- */}
         <FormControl fullWidth>
-          <InputLabel id="conservation-status-select-label">Age</InputLabel>
+          <InputLabel id="conservation-status-select-label">
+            Conservation Status
+          </InputLabel>
           <Select
             labelId="conservation-status-select-label"
             id="conservationStatus"
-            value={ formData.conservationStatus ?? '' }
-            name="conservationStatus" // <-- Add this right here!
-            label="Conservation Status" // <-- Changed from "Age"
-            onChange={ ( e ) => {
+            value={formData.conservationStatus ?? ''}
+            name="conservationStatus"
+            label="Conservation Status"
+            onChange={( e ) => {
               const {
-                name, value
+                name, value 
               } = e.target;
-
-              return setFormData( ( prev ) => {
+              setFormData( ( prev ) => {
                 return {
                   ...prev,
                   [ name ]: value,
                 };
               } );
-            } }
+            }}
           >
             {conservationStatusOptions.map( ( status ) => {
               return (
@@ -233,44 +251,134 @@ export default function SpecimenForm( {
             gap          : 2,
           }}
         >
-          <Paper elevation={1}>
+          <Paper
+            elevation={0}
+            sx={{
+              p      : 2,
+              bgcolor: 'background.default',
+            }}
+          >
             <Typography
               variant="subtitle1"
               fontWeight="medium"
               color="text.secondary"
+              mb={2}
             >
               Taxon Details
             </Typography>
-            <TextField
-              label="Family"
-              name="family"
-              variant="outlined"
-              value={formData.taxon.family ?? ''}
-              onChange={handleTaxonChange}
-              fullWidth
-            />
-            <TextField
-              label="Genus"
-              name="genus"
-              variant="outlined"
-              value={formData.taxon.genus ?? ''}
-              onChange={handleTaxonChange}
-              fullWidth
-            />
-            <TextField
-              label="Species"
-              name="species"
-              variant="outlined"
-              value={formData.taxon.species ?? ''}
-              onChange={handleTaxonChange}
-              fullWidth
-            />
+            <Stack spacing={2}>
+              <TextField
+                label="Family"
+                name="family"
+                variant="outlined"
+                value={formData.taxon.family ?? ''}
+                onChange={handleTaxonChange}
+                fullWidth
+              />
+              <TextField
+                label="Genus"
+                name="genus"
+                variant="outlined"
+                value={formData.taxon.genus ?? ''}
+                onChange={handleTaxonChange}
+                fullWidth
+              />
+              <TextField
+                label="Species"
+                name="species"
+                variant="outlined"
+                value={formData.taxon.species ?? ''}
+                onChange={handleTaxonChange}
+                fullWidth
+              />
+            </Stack>
           </Paper>
         </Box>
 
         <Divider />
 
         {/* --- ARRAY INPUTS --- */}
+
+        {/* Ecosystems Array */}
+        <Box
+          sx={{
+            display      : 'flex',
+            flexDirection: 'column',
+            gap          : 2,
+          }}
+        >
+          <Typography
+            variant="subtitle1"
+            fontWeight="medium"
+            color="text.secondary"
+          >
+            Ecosystems
+          </Typography>
+          {( formData.ecosystems || [] ).map( (
+            ecosystem, index 
+          ) => {
+            return (
+              <Stack
+                direction="row"
+                spacing={2}
+                key={`ecosystem-${ index }`}
+              >
+                <FormControl
+                  fullWidth
+                  size="small"
+                >
+                  <InputLabel>Ecosystem {index + 1}</InputLabel>
+                  <Select
+                    value={ecosystem}
+                    label={`Ecosystem ${ index + 1 }`}
+                    onChange={( e ) => {
+                      return handleArrayChange(
+                        'ecosystems',
+                        index,
+                        e.target.value,
+                      );
+                    }}
+                  >
+                    {ecosystemOptions.map( ( eco ) => {
+                      return (
+                        <MenuItem
+                          key={eco}
+                          value={eco}
+                        >
+                          {eco}
+                        </MenuItem>
+                      );
+                    } )}
+                  </Select>
+                </FormControl>
+                <Button
+                  variant="outlined"
+                  color="error"
+                  onClick={() => {
+                    return removeArrayItem(
+                      'ecosystems', index 
+                    );
+                  }}
+                >
+                  Remove
+                </Button>
+              </Stack>
+            );
+          } )}
+          <Button
+            variant="text"
+            onClick={() => {
+              return addArrayItem( 'ecosystems' );
+            }}
+            sx={{
+              alignSelf: 'flex-start',
+            }}
+          >
+            + Add Ecosystem
+          </Button>
+        </Box>
+
+        {/* Common Names Array */}
         <Box
           sx={{
             display      : 'flex',
@@ -285,8 +393,8 @@ export default function SpecimenForm( {
           >
             Common Names
           </Typography>
-          {formData.commonNames.map( (
-            name, index
+          {( formData.commonNames || [] ).map( (
+            name, index 
           ) => {
             return (
               <Stack
@@ -312,7 +420,7 @@ export default function SpecimenForm( {
                   color="error"
                   onClick={() => {
                     return removeArrayItem(
-                      'commonNames', index
+                      'commonNames', index 
                     );
                   }}
                 >
@@ -334,6 +442,7 @@ export default function SpecimenForm( {
           </Button>
         </Box>
 
+        {/* Regions Array */}
         <Box
           sx={{
             display      : 'flex',
@@ -348,8 +457,8 @@ export default function SpecimenForm( {
           >
             Regions
           </Typography>
-          {formData.regions?.map( (
-            region, index
+          {( formData.regions || [] ).map( (
+            region, index 
           ) => {
             return (
               <Stack
@@ -364,7 +473,7 @@ export default function SpecimenForm( {
                   value={region}
                   onChange={( e ) => {
                     return handleArrayChange(
-                      'regions', index, e.target.value
+                      'regions', index, e.target.value 
                     );
                   }}
                 />
@@ -373,7 +482,7 @@ export default function SpecimenForm( {
                   color="error"
                   onClick={() => {
                     return removeArrayItem(
-                      'regions', index
+                      'regions', index 
                     );
                   }}
                 >

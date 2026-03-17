@@ -78,7 +78,7 @@
       "Bosque andino"
     ],
     "url": "https://www.google.com/search?q=Clusia+multiflora&tbm=isch",
-    "imageUrl": null,
+    "imageUrl": "https://plantasdecolombia.com/wp-content/uploads/2018/07/2017-07-18-15-01-49.jpg",
     "regions": null,
     "scientificName": "Clusia multiflora",
     "taxon": {
@@ -98,7 +98,7 @@
       "Subpáramo"
     ],
     "url": "https://www.google.com/search?q=Vallea+stipularis&tbm=isch",
-    "imageUrl": "https://www.google.com/search?q=Vallea+stipularis&tbm=isch",
+    "imageUrl": "https://www.picturethisai.com/wiki-image/1080/357136825710116864.jpeg",
     "regions": null,
     "scientificName": "Vallea stipularis",
     "taxon": {
@@ -115,7 +115,7 @@
     "ecosystems": [
       "Bosque andino"
     ],
-    "imageUrl": null,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Alnus_acuminata_1.jpg/250px-Alnus_acuminata_1.jpg",
     "regions": [
       "Cundinamarca",
       "Boyacá",
@@ -130,7 +130,7 @@
     "commonNames": [
       "Aliso"
     ],
-    "url": null
+    "url": "https://www.google.com/search?newwindow=1&sca_esv=9a3fab58edaf9218&sxsrf=ANbL-n7cfBRBK9DoUvsDYA6kIbx1RIDxfQ:1773676064755&udm=2&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3o6iwGk6Iv1tRbZIBNIVs-5-bUj3iBl-UxHsANYwOkWWQqZAJJdwuRaSoLHfELMHAYjbP4OzIxpuFsnK07afGIwi3B8T8VpsJkhCNCH8sWOr-XI14GH9Gj06XFzGoKx2Dlj56c202ih2JDekeDl74karw_0MbvEpr2qspZ3wteKy0tOR0g&q=alnus+acuminata&sa=X&sqi=2&ved=2ahUKEwjg66Se4qSTAxWWTTABHdfBMI8QtKgLegQIHhAB&biw=2016&bih=1143&dpr=1.25"
   },
   {
     "conservationStatus": "Least Concern (LC)",
@@ -156,8 +156,13 @@
     "ecosystems": [
       "Bosque andino"
     ],
-    "imageUrl": "https://www.google.com/search?q=Myrcianthes+leucoxyla&tbm=isch",
-    "regions": null,
+    "imageUrl": "https://www.reddearboles.org/nwlib6/includes/phpthumb/phpThumb.php?src=/imagenes/nwproject5.forms.f_productoscatalogo/1/myrcianthesleucoxylass23.jpg&w=550&f=webp",
+    "regions": [
+      "Cundinamarca",
+      "Boyacá",
+      "Santander",
+      "Tolima"
+    ],
     "scientificName": "Myrcianthes leucoxyla",
     "taxon": {
       "family": "Myrtaceae",
@@ -176,8 +181,11 @@
       "Bosque andino",
       "Subpáramo"
     ],
-    "imageUrl": null,
-    "regions": null,
+    "imageUrl": "https://bs.plantnet.org/image/o/081392eacd408487213af3cc9f02db55759f1416",
+    "regions": [
+      "cordillera oriental",
+      "cordillera central "
+    ],
     "scientificName": "Oreopanax bogotensis",
     "taxon": {
       "family": "Araliaceae",
@@ -552,8 +560,11 @@
     "ecosystems": [
       "Páramo"
     ],
-    "imageUrl": null,
-    "regions": null,
+    "imageUrl": "https://static.inaturalist.org/photos/39748543/large.jpg",
+    "regions": [
+      "Cundinamarca",
+      "Boyacá"
+    ],
     "scientificName": "Espeletiopsis rabanalensis",
     "taxon": {
       "family": "Asteraceae",
@@ -1442,7 +1453,7 @@
     "conservationStatus": "Extinct (EX)",
     "ecosystems": null,
     "imageUrl": null,
-    "regions": [ ],
+    "regions": [],
     "scientificName": "example EX",
     "taxon": {
       "genus": "",
@@ -1458,7 +1469,7 @@
     "conservationStatus": "Extinct in the Wild (EW)",
     "ecosystems": null,
     "imageUrl": null,
-    "regions": [ ],
+    "regions": [],
     "scientificName": "example EW",
     "taxon": {
       "genus": "",
@@ -1474,7 +1485,7 @@
     "conservationStatus": "Critically Endangered (CR)",
     "ecosystems": null,
     "imageUrl": null,
-    "regions": [ ],
+    "regions": [],
     "scientificName": "example CR",
     "taxon": {
       "genus": "",
@@ -1490,7 +1501,7 @@
     "conservationStatus": "Endangered (EN)",
     "ecosystems": null,
     "imageUrl": null,
-    "regions": [ ],
+    "regions": [],
     "scientificName": "example EN",
     "taxon": {
       "genus": "",
@@ -1506,7 +1517,7 @@
     "conservationStatus": "Vulnerable (VU)",
     "ecosystems": null,
     "imageUrl": null,
-    "regions": [ ],
+    "regions": [],
     "scientificName": "example VU",
     "taxon": {
       "genus": "",
@@ -1522,7 +1533,7 @@
     "conservationStatus": "Near Threatened (NT)",
     "ecosystems": null,
     "imageUrl": null,
-    "regions": [ ],
+    "regions": [],
     "scientificName": "example NT",
     "taxon": {
       "genus": "",
@@ -1538,7 +1549,7 @@
     "conservationStatus": "Least Concern (LC)",
     "ecosystems": null,
     "imageUrl": null,
-    "regions": [ ],
+    "regions": [],
     "scientificName": "example LC",
     "taxon": {
       "genus": "",
@@ -1554,7 +1565,7 @@
     "conservationStatus": "Data Deficient (DD)",
     "ecosystems": null,
     "imageUrl": null,
-    "regions": [ ],
+    "regions": [],
     "scientificName": "example DD",
     "taxon": {
       "genus": "",
@@ -1570,7 +1581,7 @@
     "conservationStatus": "Not Evaluated (NE)",
     "ecosystems": null,
     "imageUrl": null,
-    "regions": [ ],
+    "regions": [],
     "scientificName": "example NE",
     "taxon": {
       "genus": "",

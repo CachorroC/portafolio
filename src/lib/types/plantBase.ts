@@ -1,6 +1,5 @@
-
-
-export type ConservationStatus = 'Vulnerable (VU)'
+export type ConservationStatus =
+  | 'Vulnerable (VU)'
   | 'Near Threatened (NT)'
   | 'Least Concern (LC)'
   | 'Not Evaluated (NE)'
@@ -10,16 +9,13 @@ export type ConservationStatus = 'Vulnerable (VU)'
   | 'Critically Endangered (CR)'
   | 'Data Deficient (DD)';
 
-export type Ecosystem = 'Bosque andino'
-  | 'Subpáramo'
-  | 'Páramo'
+export type Ecosystem = 'Bosque andino' | 'Subpáramo' | 'Páramo';
 
 export interface Taxon {
   family : null | string;
   genus  : string;
   species: string;
 }
-
 
 // To parse this data:
 //
@@ -37,7 +33,6 @@ export interface PlantData {
   taxon             : Taxon;
   commonNames       : string[];
 }
-
 
 // Converts JSON strings to/from your types
 export class Convert {
