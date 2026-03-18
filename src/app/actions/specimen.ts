@@ -9,109 +9,169 @@ import path from 'path';
 import { PlantData } from '#@/lib/types/plantBase';
 import clientPromise from '#@/lib/connection/mongodb';
 
-export async function upsertSpecimen( data: PlantData ) {
+async function upsertSpecimenToDB( {
+  data
+}: { data: PlantData; } ) {
   try {
-    // Await the shared connection promise
     const client = await clientPromise;
-    const database = client.db( 'botany_db' ); // Replace with your actual database name
+    const database = client.db( 'botany_db' );
     const specimens = database.collection<PlantData>( 'specimens' );
 
-    // Separate the _id from the rest of the data
     const {
-      _id, ...updateData 
+      _id, ...updateData
     } = data as any;
 
-    // Query by _id if it exists, otherwise fallback to scientificName
     const query = _id
       ? {
-          _id: new ObjectId( _id ),
+          _id: new ObjectId( _id )
         }
       : {
-          scientificName: data.scientificName,
+          scientificName: data.scientificName
         };
 
-    // Upsert the document
     const result = await specimens.findOneAndUpdate(
       query,
       {
-        $set: updateData,
+        $set: updateData
       },
       {
-        returnDocument: 'after', // Returns the updated document
-        upsert        : true, // Creates a new document if one isn't found
-      },
+        returnDocument: 'after',
+        upsert        : true
+      }
     );
 
     if ( !result ) {
-      return {
-        success: false,
-        error  : 'Failed to update or create document.',
-      };
+      throw new Error( 'Failed to update or create document in MongoDB.' );
     }
 
-    // Convert the MongoDB ObjectId to a string before sending it to the client
-    const serializedData = {
-      ...result,
-      _id: result._id.toString(),
+    return {
+      success: true,
+      data   : {
+        ...result,
+        _id: result._id.toString(),
+      },
     };
-
-    // --- JSON BACKUP SYNC LOGIC ---
-    // Construct the absolute path to the JSON file
-    const jsonFilePath = path.join(
-      process.cwd(),
-      'src/lib/json/plantListDB.json',
+  } catch ( error ) {
+    console.error(
+      'Database Error:', error
     );
 
-    // Read and parse the existing JSON file
+    return {
+      success: false,
+      error  : error instanceof Error
+        ? error.message
+        : 'Unknown database error',
+    };
+  }
+}
+
+async function upsertSpecimenToJSON( {
+  data
+}:{data: PlantData} ) {
+  try {
+    console.log( process.cwd() );
+    const jsonFilePath = path.join(
+      process.cwd(), 'src/lib/json/plantListDB.json'
+    );
     const fileContents = await fs.readFile(
-      jsonFilePath, 'utf8' 
+      jsonFilePath, 'utf8'
     );
     const plantList = JSON.parse( fileContents ) as PlantData[];
 
-    // Prepare the data for JSON (excluding the MongoDB _id)
+    // Strip out _id if it was passed in the raw data, just like the original logic
     const {
-      _id: _, ...jsonSafeData 
-    } = serializedData;
+      _id: _, ...jsonSafeData
+    } = data as any;
 
-    // Find the index of the plant by its scientific name
     const plantIndex = plantList.findIndex( ( plant ) => {
       return plant.scientificName === jsonSafeData.scientificName;
     } );
 
     if ( plantIndex !== -1 ) {
-      // If it exists in the JSON, merge the updated data
       plantList[ plantIndex ] = {
         ...plantList[ plantIndex ],
         ...jsonSafeData,
       };
     } else {
-      // If it's a completely new plant, push it to the array
       plantList.push( jsonSafeData );
     }
 
-    // Write the updated array back to the JSON file
     await fs.writeFile(
       jsonFilePath,
       JSON.stringify(
-        plantList, null, 2 
+        plantList, null, 2
       ),
-      'utf8',
+      'utf8'
     );
-    // ------------------------------
 
     return {
       success: true,
-      data   : serializedData,
+      data   : data
     };
   } catch ( error ) {
     console.error(
-      'Database/File System Error:', error 
+      'File System Error:', error
     );
 
     return {
       success: false,
-      error:
-        'An error occurred while saving to the database or syncing the backup file.',
+      error  : error instanceof Error
+        ? error.message
+        : 'Unknown file system error',
     };
   }
+}
+
+export async function upsertSpecimen( {
+  data
+}:{data: PlantData } ) {// Execute both operations concurrently.
+  // Because they internally catch their own errors, Promise.all won't short-circuit.
+  const [
+    dbResult,
+    fileResult
+  ] = await Promise.all( [
+    upsertSpecimenToDB( {
+      data
+    } ),
+    upsertSpecimenToJSON( {
+      data
+    } ),
+  ] );
+
+  // Case 1: Perfect Success
+  if ( dbResult.success && fileResult.success ) {
+    return {
+      success: true,
+      data   : dbResult.data,
+      failed : 'none',
+    };
+  }
+
+  // Case 2: Partial or Total Failure
+  let failed: 'database' | 'file' | 'both' = 'both';
+
+  if ( dbResult.success && !fileResult.success ) {
+    failed = 'file';
+  } else if ( !dbResult.success && fileResult.success ) {
+    failed = 'database';
+  }
+
+  // Construct detailed error message
+  const errors = {
+    ...( dbResult.error && {
+      db: dbResult.error
+    } ),
+    ...( fileResult.error && {
+      file: fileResult.error
+    } ),
+  };
+
+  return {
+    success: false,     // Explicitly marking as not successful per your requirements
+    failed,             // Tells you exactly which one(s) failed
+    errors,             // Contains the specific error strings for debugging
+    data   : dbResult.success
+      ? dbResult.data
+      : undefined, // Still passes db data if it succeeded
+  };
 }

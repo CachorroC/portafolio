@@ -1592,5 +1592,43 @@
       "example NE"
     ],
     "url": null
+  },
+  {
+    "scientificName": "Morella parvifolia",
+    "commonNames": [
+      "Laurel de cera",
+      "Laurel de Olivo"
+    ],
+    "conservationStatus": "Least Concern (LC)",
+    "ecosystems": [
+      "Bosque andino"
+    ],
+    "imageUrl": "https://plantasdecolombia.com/wp-content/uploads/2011/10/morella-parvifolia1.jpg",
+    "regions": [
+      "Antioquia",
+      "Boyacá",
+      "Caldas",
+      "Caquetá",
+      "Cauca",
+      "Chocó",
+      "Cundinamarca",
+      "Huila",
+      "La Guajira",
+      "Magdalena",
+      "Nariño",
+      "Norte de Santander",
+      "Putumayo",
+      "Quindio",
+      "Risaralda",
+      "Santander",
+      "Tolima",
+      "Valle del Cauca"
+    ],
+    "taxon": {
+      "family": "Myricaceae",
+      "genus": "Morella",
+      "species": "parvifolia"
+    },
+    "url": "https://www.google.com/search?q=Myrica+parvifolia&tbm=isch"
   }
 ]

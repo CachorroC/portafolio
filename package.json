@@ -18,6 +18,7 @@
     "prisma:generate": "prisma generate && ts-node src/lib/scripts/generate-dmmf.ts"
   },
   "dependencies": {
+    "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@eslint/js": "^10.0.1",

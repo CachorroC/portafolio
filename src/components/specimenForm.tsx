@@ -1,24 +1,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import React, { useState, ChangeEvent, Dispatch, SetStateAction } from 'react';
-import { Box,
-  TextField,
-  Button,
-  Typography,
-  Stack,
-  Paper,
-  Divider,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem, } from '@mui/material';
+import React, { useState, ChangeEvent, Dispatch, SetStateAction, SubmitEventHandler } from 'react';
+import { Box, TextField, Button, Typography, Stack, Paper,
+  Divider, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import { upsertSpecimen } from '#@/app/actions/specimen';
-import { PlantData, Ecosystem } from '#@/lib/types/plantBase'; // Adjust import as necessary
+import { PlantData, Ecosystem, Regions, ConservationStatus } from '#@/lib/types/plantBase'; // Adjust import as necessary
+
+// 1. Create a type for our local form array items to hold unique IDs
+type FormArrayItem = { id: string; value: string };
+
+// 2. Extend the PlantData type for our local state so TypeScript doesn't yell at us
+type FormState = Omit<PlantData, 'ecosystems' | 'regions' | 'commonNames'> & {
+  ecosystems : FormArrayItem[];
+  regions    : FormArrayItem[];
+  commonNames: FormArrayItem[];
+};
 
 type ArrayKeys = 'ecosystems' | 'regions' | 'commonNames';
 
-const conservationStatusOptions = [
+const conservationStatusOptions: ConservationStatus[] = [
   'Vulnerable (VU)',
   'Near Threatened (NT)',
   'Least Concern (LC)',
@@ -30,12 +31,71 @@ const conservationStatusOptions = [
   'Data Deficient (DD)',
 ];
 
-// Added predefined options for Ecosystem
-const ecosystemOptions: Ecosystem[] = [
-  'Bosque andino',
+const ecosystemOptions: Ecosystem[] =  [
+  'Páramo',
+  'Superpáramo',
   'Subpáramo',
-  'Páramo'
+  'High Andean Forest',
+  'Andean Cloud Forest',
+  'Sub-Andean Forest',
+  'Tropical Rainforest',
+  'Tropical Dry Forest',
+  'Xerophytic Scrub',
+  'Desert',
+  'Seasonal Savanna',
+  'Flooded Savanna',
+  'Gallery Forest',
+  'Alluvial Forest',
+  'Mangrove',
+  'Coral Reef',
+  'Seagrass Meadow',
+  'Coastal Lagoon',
+  'Estuary',
+  'Sandy Beach',
+  'Rocky Shore',
+  'Pelagic Zone',
+  'Abyssal Zone',
+  'Lentic Water System',
+  'Lotic Water System',
+  'Peatland',
+  'Insular Ecosystem'
 ];
+
+const regionOptions: Regions[] = [
+  'Amazonas',
+  'Antioquia',
+  'Arauca',
+  'Atlántico',
+  'Bolívar',
+  'Boyacá',
+  'Caldas',
+  'Caquetá',
+  'Casanare',
+  'Cauca',
+  'Cesar',
+  'Chocó',
+  'Córdoba',
+  'Cundinamarca',
+  'Guainía',
+  'Guaviare',
+  'Huila',
+  'La Guajira',
+  'Magdalena',
+  'Meta',
+  'Nariño',
+  'Norte de Santander',
+  'Putumayo',
+  'Quindío',
+  'Risaralda',
+  'San Andrés y Providencia',
+  'Santander',
+  'Sucre',
+  'Tolima',
+  'Valle del Cauca',
+  'Vaupés',
+  'Vichada'
+];
+
 
 export default function SpecimenForm( {
   initialData,
@@ -44,172 +104,216 @@ export default function SpecimenForm( {
   initialData : PlantData;
   setIsEditing: Dispatch<SetStateAction<boolean>>;
 } ) {
+
+  // 3. Initialize state by mapping standard strings into our new { id, value } objects
   const [
     formData,
     setFormData
-  ] = useState<PlantData>( initialData );
+  ] = useState<FormState>( () => {
+    return {
+      ...initialData,
+      ecosystems: ( initialData.ecosystems || [] ).map( e => {
+        return {
+          id   : crypto.randomUUID(),
+          value: e
+        };
+      } ),
+      commonNames: ( initialData.commonNames || [] ).map( c => {
+        return {
+          id   : crypto.randomUUID(),
+          value: c
+        };
+      } ),
+      regions: ( initialData.regions || [] ).map( r => {
+        return {
+          id   : crypto.randomUUID(),
+          value: r
+        };
+      } ),
+    };
+  } );
 
-  const handleInputChange = ( e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, ) => {
+  const handleInputChange = ( e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => {
     const {
-      name, value 
+      name, value
     } = e.target;
     setFormData( ( prev ) => {
       return {
         ...prev,
-        [ name ]: value,
+        [ name ]: value
       };
     } );
   };
 
-  const handleTaxonChange = ( e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, ) => {
+  const handleTaxonChange = ( e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => {
     const {
-      name, value 
+      name, value
     } = e.target;
     setFormData( ( prev ) => {
       return {
         ...prev,
         taxon: {
           ...prev.taxon,
-          [ name ]: value,
+          [ name ]: value
         },
       };
     } );
   };
 
+  // 4. Update array handlers to use the unique ID instead of the index
   const handleArrayChange = (
-    arrayName: ArrayKeys,
-    index: number,
-    value: string,
+    arrayName: ArrayKeys, id: string, newValue: string
   ) => {
     setFormData( ( prev ) => {
-      const currentArray = prev[ arrayName ] || [];
-      const updatedArray = [
-        ...currentArray
-      ];
-      updatedArray[ index ] = value;
-
       return {
         ...prev,
-        [ arrayName ]: updatedArray,
+        [ arrayName ]: prev[ arrayName ].map( ( item ) => {
+          return item.id === id
+            ? {
+                ...item,
+                value: newValue
+              }
+            : item;
+        } ),
       };
     } );
   };
 
   const addArrayItem = ( arrayName: ArrayKeys ) => {
     setFormData( ( prev ) => {
-      const currentArray = prev[ arrayName ] || [];
-
       return {
         ...prev,
         [ arrayName ]: [
-          ...currentArray,
-          ''
+          ...prev[ arrayName ],
+          {
+            id   : crypto.randomUUID(),
+            value: ''
+          } // Generate a fresh ID for new items
         ],
       };
     } );
   };
 
   const removeArrayItem = (
-    arrayName: ArrayKeys, index: number 
+    arrayName: ArrayKeys, id: string
   ) => {
     setFormData( ( prev ) => {
-      const currentArray = prev[ arrayName ] || [];
-
       return {
         ...prev,
-        [ arrayName ]: currentArray.filter( (
-          _, i 
-        ) => {
-          return i !== index;
+        [ arrayName ]: prev[ arrayName ].filter( ( item ) => {
+          return item.id !== id;
         } ),
       };
     } );
   };
 
-  const handleSubmit = async ( e: React.FormEvent ) => {
+  const handleSubmit: SubmitEventHandler<HTMLFormElement> = async ( e ) => {
     e.preventDefault();
 
-    try {
-      const response = await upsertSpecimen( formData );
+    // Flatten the objects back into standard strings
+    const payloadToSave: PlantData = {
+      ...formData,
+      ecosystems: formData.ecosystems.map( item => {
+        return item.value as Ecosystem;
+      } ),
+      commonNames: formData.commonNames.map( item => {
+        return item.value;
+      } )
+        .filter( val => {
+          return val.trim() !== '';
+        } ),
+      regions: formData.regions.map( item => {
+        return item.value as Regions;
+      } )
+        .filter( val => {
+          return val.trim() !== '';
+        } ),
+    };
 
-      if ( response.success && response.data ) {
-        setFormData( response.data as any as PlantData );
+    try {
+      const response = await upsertSpecimen( {
+        data: payloadToSave
+      } );
+
+      // Treat as success if it's a perfect success OR if DB succeeded but JSON failed
+      if ( response.success || ( response.data && response.failed === 'file' ) ) {
+        const savedData = response.data as any as PlantData;
+
+        // Update local UI state
+        setFormData( {
+          ...savedData,
+          ecosystems: ( savedData.ecosystems || [] ).map( ecosystem => {
+            return {
+              id   : crypto.randomUUID(),
+              value: ecosystem
+            };
+          } ),
+          commonNames: ( savedData.commonNames || [] ).map( ccommonName => {
+            return {
+              id   : crypto.randomUUID(),
+              value: ccommonName
+            };
+          } ),
+          regions: ( savedData.regions || [] ).map( region => {
+            return {
+              id   : crypto.randomUUID(),
+              value: region
+            };
+          } ),
+        } );
+
         console.log(
-          'Successfully saved to MongoDB:', response.data 
+          'Successfully saved to MongoDB:', savedData
         );
-        setIsEditing( false );
+
+        // Log a soft warning if the file backup failed, but still close the form
+        if ( response.failed === 'file' ) {
+          console.warn(
+            'Note: Database updated, but JSON backup failed:', response.errors?.file
+          );
+        }
+
+
       } else {
+      // Total failure or Database failure
         console.error(
-          'Failed to save:', response.error 
+          'Failed to save. Point of failure:', response.failed
+        );
+        console.error(
+          'Error details:', response.errors
         );
       }
     } catch ( error ) {
       console.error(
-        'Network or server error:', error 
+        'Network or server error:', error
       );
     }
+
+    setIsEditing( false );
   };
 
   return (
-    <Paper
-      elevation={3}
-      sx={{
-        maxWidth: 600,
-        mx      : 'auto',
-        mt      : 4,
-        p       : 4,
-      }}
+    <Paper elevation={3} sx={{
+      maxWidth: 600,
+      mx      : 'auto',
+      mt      : 4,
+      p       : 4
+    }}
     >
-      <Box
-        component="form"
-        onSubmit={handleSubmit}
-        sx={{
-          display      : 'flex',
-          flexDirection: 'column',
-          gap          : 3,
-        }}
+      <Box component="form" onSubmit={handleSubmit} sx={{
+        display      : 'flex',
+        flexDirection: 'column',
+        gap          : 3
+      }}
       >
-        <Typography
-          variant="h5"
-          component="h2"
-          fontWeight="bold"
-        >
-          Edit Specimen
-        </Typography>
+        <Typography variant="h5" component="h2" fontWeight="bold">Edit Specimen</Typography>
 
-        {/* --- STANDARD STRING INPUTS --- */}
-        <TextField
-          label="Scientific Name"
-          name="scientificName"
-          variant="outlined"
-          value={formData.scientificName}
-          onChange={handleInputChange}
-          fullWidth
-        />
+        <TextField label="Scientific Name" name="scientificName" variant="outlined" value={formData.scientificName} onChange={handleInputChange} fullWidth />
+        <TextField label="URL (Source/Reference)" name="url" variant="outlined" value={formData.url ?? ''} onChange={handleInputChange} fullWidth />
+        <TextField label="Image URL" name="imageUrl" variant="outlined" value={formData.imageUrl ?? ''} onChange={handleInputChange} fullWidth />
 
-        <TextField
-          label="URL (Source/Reference)"
-          name="url"
-          variant="outlined"
-          value={formData.url ?? ''}
-          onChange={handleInputChange}
-          fullWidth
-        />
-
-        <TextField
-          label="Image URL"
-          name="imageUrl"
-          variant="outlined"
-          value={formData.imageUrl ?? ''}
-          onChange={handleInputChange}
-          fullWidth
-        />
-
-        {/* --- CONSERVATION STATUS (Dropdown only) --- */}
         <FormControl fullWidth>
-          <InputLabel id="conservation-status-select-label">
-            Conservation Status
-          </InputLabel>
+          <InputLabel id="conservation-status-select-label">Conservation Status</InputLabel>
           <Select
             labelId="conservation-status-select-label"
             id="conservationStatus"
@@ -217,25 +321,17 @@ export default function SpecimenForm( {
             name="conservationStatus"
             label="Conservation Status"
             onChange={( e ) => {
-              const {
-                name, value 
-              } = e.target;
-              setFormData( ( prev ) => {
+              return setFormData( ( prev ) => {
                 return {
                   ...prev,
-                  [ name ]: value,
+                  [ e.target.name ]: e.target.value
                 };
               } );
             }}
           >
             {conservationStatusOptions.map( ( status ) => {
               return (
-                <MenuItem
-                  key={status}
-                  value={status}
-                >
-                  {status}
-                </MenuItem>
+                <MenuItem key={status} value={status}>{status}</MenuItem>
               );
             } )}
           </Select>
@@ -243,120 +339,66 @@ export default function SpecimenForm( {
 
         <Divider />
 
-        {/* --- NESTED OBJECT INPUT --- */}
-        <Box
-          sx={{
-            display      : 'flex',
-            flexDirection: 'column',
-            gap          : 2,
-          }}
+        <Box sx={{
+          display      : 'flex',
+          flexDirection: 'column',
+          gap          : 2
+        }}
         >
-          <Paper
-            elevation={0}
-            sx={{
-              p      : 2,
-              bgcolor: 'background.default',
-            }}
+          <Paper elevation={0} sx={{
+            p      : 2,
+            bgcolor: 'background.default'
+          }}
           >
-            <Typography
-              variant="subtitle1"
-              fontWeight="medium"
-              color="text.secondary"
-              mb={2}
-            >
-              Taxon Details
-            </Typography>
+            <Typography variant="subtitle1" fontWeight="medium" color="text.secondary" mb={2}>Taxon Details</Typography>
             <Stack spacing={2}>
-              <TextField
-                label="Family"
-                name="family"
-                variant="outlined"
-                value={formData.taxon.family ?? ''}
-                onChange={handleTaxonChange}
-                fullWidth
-              />
-              <TextField
-                label="Genus"
-                name="genus"
-                variant="outlined"
-                value={formData.taxon.genus ?? ''}
-                onChange={handleTaxonChange}
-                fullWidth
-              />
-              <TextField
-                label="Species"
-                name="species"
-                variant="outlined"
-                value={formData.taxon.species ?? ''}
-                onChange={handleTaxonChange}
-                fullWidth
-              />
+              <TextField label="Family" name="family" variant="outlined" value={formData.taxon.family ?? ''} onChange={handleTaxonChange} fullWidth />
+              <TextField label="Genus" name="genus" variant="outlined" value={formData.taxon.genus ?? ''} onChange={handleTaxonChange} fullWidth />
+              <TextField label="Species" name="species" variant="outlined" value={formData.taxon.species ?? ''} onChange={handleTaxonChange} fullWidth />
             </Stack>
           </Paper>
         </Box>
 
         <Divider />
 
-        {/* --- ARRAY INPUTS --- */}
-
-        {/* Ecosystems Array */}
-        <Box
-          sx={{
-            display      : 'flex',
-            flexDirection: 'column',
-            gap          : 2,
-          }}
+        {/* --- Ecosystems Array --- */}
+        <Box sx={{
+          display      : 'flex',
+          flexDirection: 'column',
+          gap          : 2
+        }}
         >
-          <Typography
-            variant="subtitle1"
-            fontWeight="medium"
-            color="text.secondary"
-          >
-            Ecosystems
-          </Typography>
-          {( formData.ecosystems || [] ).map( (
-            ecosystem, index 
+          <Typography variant="subtitle1" fontWeight="medium" color="text.secondary">Ecosystems</Typography>
+          {formData.ecosystems.map( (
+            ecosystemObj, index
           ) => {
             return (
-              <Stack
-                direction="row"
-                spacing={2}
-                key={`ecosystem-${ index }`}
-              >
-                <FormControl
-                  fullWidth
-                  size="small"
-                >
+              <Stack direction="row" spacing={2} key={ecosystemObj.id}> {/* Changed key to ID */}
+                <FormControl fullWidth size="small">
                   <InputLabel>Ecosystem {index + 1}</InputLabel>
                   <Select
-                    value={ecosystem}
+                    value={ecosystemObj.value}
                     label={`Ecosystem ${ index + 1 }`}
                     onChange={( e ) => {
                       return handleArrayChange(
-                        'ecosystems',
-                        index,
-                        e.target.value,
+                        'ecosystems', ecosystemObj.id, e.target.value
                       );
                     }}
                   >
                     {ecosystemOptions.map( ( eco ) => {
                       return (
-                        <MenuItem
-                          key={eco}
-                          value={eco}
-                        >
-                          {eco}
-                        </MenuItem>
+                        <MenuItem key={eco} value={eco}>{eco}</MenuItem>
                       );
                     } )}
                   </Select>
                 </FormControl>
                 <Button
+                  type="button" // Fix applied
                   variant="outlined"
                   color="error"
                   onClick={() => {
                     return removeArrayItem(
-                      'ecosystems', index 
+                      'ecosystems', ecosystemObj.id
                     );
                   }}
                 >
@@ -365,62 +407,47 @@ export default function SpecimenForm( {
               </Stack>
             );
           } )}
-          <Button
-            variant="text"
-            onClick={() => {
-              return addArrayItem( 'ecosystems' );
-            }}
-            sx={{
-              alignSelf: 'flex-start',
-            }}
+          <Button type="button" variant="text" onClick={() => {
+            return addArrayItem( 'ecosystems' );
+          }} sx={{
+            alignSelf: 'flex-start'
+          }}
           >
             + Add Ecosystem
           </Button>
         </Box>
 
-        {/* Common Names Array */}
-        <Box
-          sx={{
-            display      : 'flex',
-            flexDirection: 'column',
-            gap          : 2,
-          }}
+        {/* --- Common Names Array --- */}
+        <Box sx={{
+          display      : 'flex',
+          flexDirection: 'column',
+          gap          : 2
+        }}
         >
-          <Typography
-            variant="subtitle1"
-            fontWeight="medium"
-            color="text.secondary"
-          >
-            Common Names
-          </Typography>
-          {( formData.commonNames || [] ).map( (
-            name, index 
+          <Typography variant="subtitle1" fontWeight="medium" color="text.secondary">Common Names</Typography>
+          {formData.commonNames.map( (
+            nameObj, index
           ) => {
             return (
-              <Stack
-                direction="row"
-                spacing={2}
-                key={`commonName-${ index }`}
-              >
+              <Stack direction="row" spacing={2} key={nameObj.id}>
                 <TextField
                   fullWidth
                   size="small"
                   label={`Common Name ${ index + 1 }`}
-                  value={name}
+                  value={nameObj.value}
                   onChange={( e ) => {
                     return handleArrayChange(
-                      'commonNames',
-                      index,
-                      e.target.value,
+                      'commonNames', nameObj.id, e.target.value
                     );
                   }}
                 />
                 <Button
+                  type="button" // Fix applied
                   variant="outlined"
                   color="error"
                   onClick={() => {
                     return removeArrayItem(
-                      'commonNames', index 
+                      'commonNames', nameObj.id
                     );
                   }}
                 >
@@ -429,60 +456,65 @@ export default function SpecimenForm( {
               </Stack>
             );
           } )}
-          <Button
-            variant="text"
-            onClick={() => {
-              return addArrayItem( 'commonNames' );
-            }}
-            sx={{
-              alignSelf: 'flex-start',
-            }}
+          <Button type="button" variant="text" onClick={() => {
+            return addArrayItem( 'commonNames' );
+          }} sx={{
+            alignSelf: 'flex-start'
+          }}
           >
             + Add Common Name
           </Button>
         </Box>
 
-        {/* Regions Array */}
-        <Box
-          sx={{
-            display      : 'flex',
-            flexDirection: 'column',
-            gap          : 2,
-          }}
+        {/* --- Regions Array --- */}
+        <Box sx={{
+          display      : 'flex',
+          flexDirection: 'column',
+          gap          : 2
+        }}
         >
-          <Typography
-            variant="subtitle1"
-            fontWeight="medium"
-            color="text.secondary"
-          >
-            Regions
-          </Typography>
-          {( formData.regions || [] ).map( (
-            region, index 
+          <Typography variant="subtitle1" fontWeight="medium" color="text.secondary">Regions</Typography>
+          {formData.regions.map( (
+            regionObj, index
           ) => {
             return (
-              <Stack
-                direction="row"
-                spacing={2}
-                key={`region-${ index }`}
-              >
+              <Stack direction="row" spacing={ 2 } key={ regionObj.id }>
+                <FormControl fullWidth size="small">
+                  <InputLabel>Region {index + 1}</InputLabel>
+                  <Select
+                    value={regionObj.value}
+                    label={`Region ${ index + 1 }`}
+                    onChange={( e ) => {
+                      return handleArrayChange(
+                        'regions', regionObj.id, e.target.value
+                      );
+                    }}
+                  >
+                    {regionOptions.map( ( region ) => {
+                      return (
+                        <MenuItem key={region} value={region}>{region}</MenuItem>
+                      );
+                    } )}
+                  </Select>
+                </FormControl>
                 <TextField
                   fullWidth
                   size="small"
                   label={`Region ${ index + 1 }`}
-                  value={region}
+                  value={regionObj.value}
                   onChange={( e ) => {
                     return handleArrayChange(
-                      'regions', index, e.target.value 
+                      'regions', regionObj.id, e.target.value
                     );
                   }}
                 />
                 <Button
+                  type="button" // Fix applied
                   variant="outlined"
                   color="error"
                   onClick={() => {
                     return removeArrayItem(
-                      'regions', index 
+                      'regions', regionObj.id
                     );
                   }}
                 >
@@ -492,30 +524,22 @@ export default function SpecimenForm( {
             );
           } )}
           <Button
-            variant="text"
-            onClick={() => {
+            variant="text" type="button"  onClick={ () => {
               return addArrayItem( 'regions' );
-            }}
-            sx={{
-              alignSelf: 'flex-start',
+            }} sx={{
+              alignSelf: 'flex-start'
             }}
           >
             + Add Region
           </Button>
         </Box>
 
-        <Box
-          sx={{
-            mt: 2,
-          }}
+        <Box sx={{
+          mt: 2
+        }}
         >
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            size="large"
-            fullWidth
-          >
+          {/* Main submit button remains untouched */}
+          <Button type="submit" variant="contained" color="primary" size="large" fullWidth>
             Save Changes
           </Button>
         </Box>
