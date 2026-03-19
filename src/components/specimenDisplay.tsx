@@ -52,7 +52,8 @@ export default function SpecimenDisplay( {
             color="text.secondary"
             gutterBottom
           >
-            {data.commonNames?.join( ' • ' ) || 'No common names known'}
+            { data.commonNames?.join( ` +
+              ` ) || 'No common names known' }
           </Typography>
         </Box>
 

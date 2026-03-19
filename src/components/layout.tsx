@@ -59,7 +59,7 @@ export default function Layout( {
 
       <Container
         component="main"
-        maxWidth="lg"
+        maxWidth={false}
         sx={{
           flexGrow     : 1,
           display      : 'flex',

@@ -93,7 +93,7 @@ export const plantColumns: GridColDef<PlantData>[] = [
             eco, index
           ) => {
             return (
-              <Chip key={index} label={eco} size="small" color="success" variant="outlined" />
+              <Chip key={index} label={eco} size="small"   />
             );
           } )}
         </Box>

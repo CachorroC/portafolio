@@ -37,7 +37,7 @@ export default function SpecimenEditSelection( {
           // 2. Default to stacked (mobile-first / narrow container)
           flexDirection                               : 'column',
           // 3. If the container itself is 400px or wider, switch to side-by-side
-          '@container specimenCard (min-width: 400px)': {
+          '@container specimenCard (min-width: 800px)': {
             flexDirection: 'row',
           },
         }}
@@ -47,7 +47,7 @@ export default function SpecimenEditSelection( {
           sx={{
             // Stacked width
             width                                       : '100%',
-            '@container specimenCard (min-width: 400px)': {
+            '@container specimenCard (min-width: 800px)': {
               // Side-by-side width (roughly equivalent to Grid size 5)
               width: '41.66%',
             },
@@ -70,13 +70,14 @@ export default function SpecimenEditSelection( {
         </Box>
 
         {/* --- RIGHT COLUMN: DATA --- */}
-        <Box
+        <
+          
           sx={{
             // Stacked width
             width                                       : '100%',
             display                                     : 'flex',
             flexDirection                               : 'column',
-            '@container specimenCard (min-width: 400px)': {
+            '@container specimenCard (min-width: 800px)': {
               // Side-by-side width (roughly equivalent to Grid size 7)
               width: '58.33%',
             },
@@ -107,7 +108,7 @@ export default function SpecimenEditSelection( {
             endIcon={<SendIcon />}
             sx={{
               m        : 2,
-              alignSelf: 'flex-start' 
+              alignSelf: 'flex-start'
             }}
           >
             Send

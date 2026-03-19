@@ -32,7 +32,7 @@ export default function RootLayout( {
       <body
         className={`${ playDisp.variable } ${ josefina.className } ${ raleway.variable } ${ radio.variable } ${ ptserif.variable } [ color-scheme: light dark ]`}
       >
-        <InitColorSchemeScript attribute="class" defaultMode="system"/>
+        <InitColorSchemeScript attribute="data" defaultMode="system"/>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />

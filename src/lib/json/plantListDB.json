@@ -24,7 +24,7 @@
   {
     "conservationStatus": "Near Threatened (NT)",
     "ecosystems": [
-      "Bosque andino"
+      "Andean Forest"
     ],
     "url": "https://www.google.com/search?q=Cedrela+montana&tbm=isch",
     "imageUrl": "https://catalogofloravalleaburra.eia.edu.co/storage/images/5937e15ea21a329476b6ff6a39cbb81df1520f16.jpg",
@@ -597,10 +597,14 @@
   {
     "conservationStatus": "Endangered (EN)",
     "ecosystems": [
-      "Páramo"
+      "Páramo",
+      "Superpáramo"
     ],
-    "imageUrl": null,
-    "regions": null,
+    "imageUrl": "https://plantasdecolombia.com/wp-content/uploads/2016/09/imag2478.jpg",
+    "regions": [
+      "Boyacá",
+      "Cundinamarca"
+    ],
     "scientificName": "Espeletia murilloi",
     "taxon": {
       "family": "Asteraceae",
